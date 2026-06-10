@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rodychi Media — Telegram-екосистеми, які приносять гроші</title>
+<meta name="description" content="Будуємо Telegram-екосистеми для експертів, бізнесу та онлайн-шкіл України. Не просто канал — повна система монетизації. 120+ клієнтів, $3.4M+ виручки клієнтам.">
+<meta property="og:title" content="Rodychi Media — Telegram-екосистеми, які приносять гроші">
+<meta property="og:description" content="Не просто канал — повна система монетизації. Для експертів, бізнесу та онлайн-шкіл України.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://rodychi.media">
+<meta property="og:locale" content="uk_UA">
+<link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%230C1638"/><g fill="none" stroke="%234E82EB" stroke-width="9" stroke-linecap="round"><path d="M50 12a38 38 0 0 1 32.9 19"/><path d="M88 50a38 38 0 0 1-19 32.9"/><path d="M50 88a38 38 0 0 1-32.9-19"/><path d="M12 50a38 38 0 0 1 19-32.9"/></g><g fill="%234E82EB"><circle cx="50" cy="19" r="7"/><circle cx="81" cy="50" r="7"/><circle cx="50" cy="81" r="7"/><circle cx="19" cy="50" r="7"/></g></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0C1638; --bg2:#0F1B4A; --accent:#2658D2; --accent2:#4E82EB;
+  --txt:#FFFFFF; --muted:#8899CC; --gold:#D7AF5F;
+  --card:rgba(38,88,210,.10); --card-br:rgba(38,88,210,.30);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.mega{font-family:'Montserrat',sans-serif;line-height:1.15}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{padding:96px 0;position:relative}
+.label{display:inline-block;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin-bottom:18px}
+.h2{font-size:clamp(30px,4.5vw,52px);font-weight:800;margin-bottom:16px}
+.sub{color:var(--muted);font-size:clamp(16px,2vw,19px);max-width:640px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:14px;font-weight:700;font-size:16px;transition:.25s;cursor:pointer;border:none}
+.btn-gold{background:var(--gold);color:#0C1638}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(215,175,95,.35)}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.25)}
+.btn-ghost:hover{border-color:var(--accent2);background:rgba(38,88,210,.12)}
+.btn-blue{background:var(--accent);color:#fff}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(38,88,210,.4)}
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.rv.on{opacity:1;transform:none}
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(12,22,56,.82);backdrop-filter:blur(14px);border-bottom:1px solid rgba(38,88,210,.18)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1200px;margin:0 auto;padding:0 24px}
+.logo{display:flex;align-items:center;gap:11px;font-family:'Montserrat',sans-serif}
+.logo svg{width:38px;height:38px}
+.logo b{font-size:18px;font-weight:800;letter-spacing:.04em}
+.logo b span{display:block;font-size:9px;font-weight:600;letter-spacing:.42em;color:var(--accent2);text-transform:lowercase;margin-top:-2px}
+.nav-links{display:flex;gap:34px;font-size:15px;font-weight:500;color:#C6D2F2}
+.nav-links a:hover{color:#fff}
+.nav-cta{padding:11px 22px;font-size:14px}
+.burger{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;position:relative;z-index:102}
+.burger span{display:block;width:24px;height:2px;background:#fff;margin:5px auto;transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(12,22,56,.97);z-index:101;flex-direction:column;align-items:center;justify-content:center;gap:30px;font-size:22px;font-weight:600}
+.mobile-menu.open{display:flex}
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;align-items:center;padding:140px 0 80px;background:
+  radial-gradient(1100px 600px at 80% -10%, rgba(38,88,210,.28), transparent 60%),
+  radial-gradient(800px 500px at -10% 90%, rgba(38,88,210,.18), transparent 60%), var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+.hero h1{font-size:clamp(38px,5.6vw,72px);font-weight:900;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;color:var(--accent2)}
+.hero .sub{margin:22px 0 34px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.counters{display:flex;gap:48px;margin-top:56px;flex-wrap:wrap}
+.counter .num{font-family:'Montserrat',sans-serif;font-size:clamp(34px,4vw,48px);font-weight:800;color:#fff}
+.counter .num i{font-style:normal;color:var(--accent2)}
+.counter .cap{color:var(--muted);font-size:14px;margin-top:2px}
+/* TG mockup */
+.tg-mock{background:linear-gradient(160deg,#101D52,#0C1638);border:1px solid var(--card-br);border-radius:24px;padding:22px;box-shadow:0 30px 80px rgba(0,0,0,.45);max-width:420px;margin-left:auto}
+.tg-head{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.08)}
+.tg-ava{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tg-ava svg{width:26px;height:26px}
+.tg-head .t1{font-weight:700;font-size:15px}
+.tg-head .t2{font-size:12.5px;color:var(--accent2)}
+.tg-video{width:100%;border-radius:14px;margin-top:16px;display:block}
+.tg-msgs{display:flex;flex-direction:column;gap:10px;padding:18px 0}
+.tg-msg{background:rgba(38,88,210,.16);border:1px solid rgba(38,88,210,.22);border-radius:14px;border-top-left-radius:4px;padding:11px 14px;font-size:13.5px;max-width:92%;color:#DCE5FB}
+.tg-msg b{color:#fff}
+.tg-msg .meta{display:flex;gap:10px;margin-top:7px;font-size:11.5px;color:var(--muted)}
+.tg-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08)}
+.tg-stat{background:rgba(255,255,255,.04);border-radius:12px;padding:10px 8px;text-align:center}
+.tg-stat .v{font-family:'Montserrat',sans-serif;font-weight:800;font-size:17px;color:var(--accent2)}
+.tg-stat .k{font-size:10.5px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
+/* ===== TRUST STRIP ===== */
+.strip{padding:34px 0;background:var(--bg2);border-top:1px solid rgba(38,88,210,.18);border-bottom:1px solid rgba(38,88,210,.18);overflow:hidden}
+.strip p{text-align:center;color:var(--muted);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:20px}
+.marquee{display:flex;gap:64px;width:max-content;animation:scroll 28s linear infinite}
+.marquee span{font-family:'Montserrat',sans-serif;font-weight:800;font-size:20px;color:rgba(255,255,255,.34);white-space:nowrap;display:flex;align-items:center;gap:64px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+/* ===== SEGMENTS ===== */
+.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.seg{background:var(--card);border:1px solid var(--card-br);border-radius:22px;padding:34px 30px;display:flex;flex-direction:column;transition:.3s}
+.seg:hover{transform:translateY(-6px);border-color:var(--accent2);box-shadow:0 24px 60px rgba(38,88,210,.22)}
+.seg .ico{font-size:34px;margin-bottom:18px}
+.seg h3{font-size:22px;font-weight:800;margin-bottom:6px}
+.seg .who{color:var(--accent2);font-size:13.5px;font-weight:600;margin-bottom:18px}
+.seg .pair{margin-bottom:14px;font-size:14.5px}
+.seg .pair b{display:block;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px}
+.seg .pair.prob b{color:#E07A7A}.seg .pair.sol b{color:#6FCF97}
+.seg .pair p{color:#C6D2F2}
+.seg .res{background:rgba(12,22,56,.55);border:1px solid rgba(38,88,210,.25);border-radius:14px;padding:13px 16px;font-size:13.5px;color:#DCE5FB;margin:6px 0 20px}
+.seg .res b{color:var(--gold)}
+.seg a{margin-top:auto;color:var(--accent2);font-weight:700;font-size:15px}
+.seg a:hover{color:#fff}
+/* ===== PROCESS ===== */
+.process{background:var(--bg2)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:48px}
+.step{background:rgba(12,22,56,.5);border:1px solid var(--card-br);border-radius:18px;padding:26px 22px;position:relative}
+.step .n{font-family:'Montserrat',sans-serif;font-size:44px;font-weight:800;color:transparent;-webkit-text-stroke:1.5px var(--accent2);margin-bottom:12px}
+.step h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.step p{font-size:13.5px;color:var(--muted)}
+.step .free{display:inline-block;background:rgba(215,175,95,.15);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:20px;padding:3px 10px;margin-top:10px}
+/* ===== CASES ===== */
+.filters{display:flex;gap:10px;margin-top:36px;flex-wrap:wrap}
+.filters button{background:transparent;border:1px solid var(--card-br);color:#C6D2F2;border-radius:30px;padding:9px 22px;font-size:14px;font-weight:600;cursor:pointer;transition:.25s;font-family:'Inter',sans-serif}
+.filters button.act,.filters button:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:34px}
+.case{background:linear-gradient(165deg,#11205A,#0D1840);border:1px solid var(--card-br);border-radius:22px;padding:32px 28px;transition:.3s}
+.case.hide{display:none}
+.case:hover{transform:translateY(-6px);border-color:var(--accent2)}
+.case .tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);background:rgba(38,88,210,.16);padding:4px 12px;border-radius:20px;margin-bottom:16px}
+.case h3{font-size:19px;font-weight:800;margin-bottom:20px;min-height:54px}
+.case .metrics{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.case .metrics span{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:6px 11px;font-size:13px;font-weight:600;color:#DCE5FB}
+.case .metrics span b{color:var(--gold)}
+.case .budget{font-size:13.5px;color:var(--muted)}
+.case .budget b{color:#fff}
+/* ===== SERVICES ===== */
+.services{background:var(--bg2)}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:48px}
+.srv{background:rgba(12,22,56,.5);border:1px solid var(--card-br);border-radius:18px;padding:28px 26px;transition:.3s}
+.srv:hover{border-color:var(--accent2);transform:translateY(-4px)}
+.srv .ic{width:46px;height:46px;border-radius:13px;background:rgba(38,88,210,.2);display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:22px}
+.srv h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.srv p{font-size:14px;color:var(--muted)}
+.srv .free-b{display:inline-block;background:rgba(215,175,95,.15);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:20px;padding:3px 10px;margin-top:12px}
+/* ===== CHAT problem/solution ===== */
+.chat{max-width:760px;margin:52px auto 0;display:flex;flex-direction:column;gap:18px}
+.bub{max-width:78%;padding:18px 22px;border-radius:20px;font-size:15.5px;position:relative}
+.bub .from{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.bub.q{align-self:flex-start;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-bottom-left-radius:6px}
+.bub.q .from{color:#E07A7A}
+.bub.a{align-self:flex-end;background:linear-gradient(135deg,var(--accent),#1E46A8);border-bottom-right-radius:6px;box-shadow:0 14px 40px rgba(38,88,210,.3)}
+.bub.a .from{color:#BFD3FF}
+.bub.a b{color:var(--gold)}
+/* ===== GUIDES ===== */
+.guides-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.guide{background:linear-gradient(165deg,#11205A,#0D1840);border:1px solid var(--card-br);border-radius:22px;padding:30px 28px;display:flex;flex-direction:column;transition:.3s}
+.guide:hover{transform:translateY(-6px);border-color:var(--accent2)}
+.guide .pdf-prev{background:#FCFDFF;border-radius:14px;padding:22px 20px;margin-bottom:22px;position:relative;overflow:hidden}
+.guide .pdf-prev::after{content:"";position:absolute;right:-28px;top:-28px;width:90px;height:90px;border-radius:50%;background:rgba(38,88,210,.12)}
+.guide .pdf-prev .pl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#2658D2;font-weight:800;margin-bottom:8px}
+.guide .pdf-prev .pt{font-family:'Montserrat',sans-serif;font-weight:800;font-size:16.5px;color:#0C1638;line-height:1.3}
+.guide .pdf-prev .pp{font-size:11.5px;margin-top:10px;color:#647396}
+.guide .g-tag{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:8px}
+.guide p{font-size:14px;color:var(--muted);margin-bottom:22px}
+.guide .btn{margin-top:auto;justify-content:center}
+/* ===== ABOUT ===== */
+.about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+.founder{aspect-ratio:4/4.6;border-radius:24px;background:linear-gradient(160deg,#16266B,#0C1638);border:1px solid var(--card-br);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.founder svg{width:54%;opacity:.9}
+.founder .badge{position:absolute;bottom:20px;left:20px;right:20px;background:rgba(12,22,56,.85);backdrop-filter:blur(8px);border:1px solid var(--card-br);border-radius:14px;padding:14px 18px}
+.founder .badge b{display:block;font-size:16px}
+.founder .badge span{font-size:13px;color:var(--accent2)}
+.about-txt p.big{font-size:clamp(19px,2.4vw,24px);font-weight:600;line-height:1.5;margin-bottom:26px}
+.about-txt p.big b{color:var(--accent2)}
+.about-nums{display:flex;gap:40px;margin-bottom:30px;flex-wrap:wrap}
+.about-nums .an b{font-family:'Montserrat',sans-serif;font-size:30px;font-weight:800;color:var(--gold)}
+.about-nums .an span{display:block;font-size:13px;color:var(--muted)}
+.socials{display:flex;gap:12px;flex-wrap:wrap}
+.socials a{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--card-br);border-radius:12px;padding:10px 18px;font-size:14px;font-weight:600;color:#C6D2F2;transition:.25s}
+.socials a:hover{border-color:var(--accent2);color:#fff;background:rgba(38,88,210,.12)}
+/* ===== REVIEWS ===== */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.rev{background:var(--card);border:1px solid var(--card-br);border-radius:20px;padding:30px 28px}
+.rev .stars{color:var(--gold);letter-spacing:3px;margin-bottom:16px;font-size:15px}
+.rev p{font-size:15px;color:#DCE5FB;margin-bottom:22px;font-style:italic}
+.rev .who{display:flex;align-items:center;gap:12px}
+.rev .who .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;font-family:'Montserrat',sans-serif}
+.rev .who b{display:block;font-size:14.5px}
+.rev .who span{font-size:12.5px;color:var(--muted)}
+/* ===== CTA ===== */
+.cta-sec{background:
+  radial-gradient(900px 500px at 50% 120%, rgba(38,88,210,.35), transparent 65%), var(--bg);text-align:center}
+.cta-sec h2{font-size:clamp(30px,4.6vw,54px);font-weight:900;max-width:820px;margin:0 auto 18px}
+.cta-sec .sub{margin:0 auto 38px}
+.cta-form{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.cta-form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cta-form input,.cta-form select{background:rgba(255,255,255,.05);border:1px solid var(--card-br);border-radius:13px;padding:15px 18px;color:#fff;font-size:15px;font-family:'Inter',sans-serif;width:100%}
+.cta-form input::placeholder{color:var(--muted)}
+.cta-form select{appearance:none;color:var(--muted)}
+.cta-form select:valid{color:#fff}
+.cta-form input:focus,.cta-form select:focus{outline:none;border-color:var(--accent2)}
+.cta-or{color:var(--muted);font-size:14px;margin:26px 0 16px}
+/* ===== FOOTER ===== */
+footer{background:#0A1230;border-top:1px solid rgba(38,88,210,.18);padding:56px 0 28px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.foot-grid h4{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.foot-grid ul{list-style:none;display:flex;flex-direction:column;gap:10px;font-size:14.5px;color:#C6D2F2}
+.foot-grid ul a:hover{color:#fff}
+.foot-desc{color:var(--muted);font-size:14px;max-width:300px;margin-top:14px}
+.copy{border-top:1px solid rgba(255,255,255,.07);padding-top:24px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:13.5px}
+/* ===== RESPONSIVE ===== */
+@media(max-width:1020px){
+  .cards3,.cases-grid,.srv-grid,.guides-grid,.rev-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(3,1fr)}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .tg-mock{margin:0 auto}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+}
+@media(max-width:680px){
+  section{padding:68px 0}
+  .nav-links,.nav-cta{display:none}
+  .burger{display:block}
+  .cards3,.cases-grid,.srv-grid,.guides-grid,.rev-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .counters{gap:28px}
+  .cta-form .row{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .bub{max-width:92%}
+}
+@media(max-width:430px){.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="#top" aria-label="Rodychi Media">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <g fill="none" stroke="#4E82EB" stroke-width="9" stroke-linecap="round">
+          <path d="M50 12a38 38 0 0 1 32.9 19"/><path d="M88 50a38 38 0 0 1-19 32.9"/>
+          <path d="M50 88a38 38 0 0 1-32.9-19"/><path d="M12 50a38 38 0 0 1 19-32.9"/>
+        </g>
+        <g fill="#4E82EB"><circle cx="50" cy="19" r="7"/><circle cx="81" cy="50" r="7"/><circle cx="50" cy="81" r="7"/><circle cx="19" cy="50" r="7"/></g>
+      </svg>
+      <b>RODYCHI<span>m e d i a</span></b>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Послуги</a><a href="#segments">Для кого</a><a href="#cases">Кейси</a><a href="#about">Про нас</a>
+    </div>
+    <a class="btn btn-gold nav-cta" href="#contact">Отримати консультацію</a>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mmenu">
+  <a href="#services">Послуги</a><a href="#segments">Для кого</a><a href="#cases">Кейси</a><a href="#about">Про нас</a>
+  <a class="btn btn-gold" href="#contact">Отримати консультацію</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Будуємо Telegram-екосистеми, які <em>приносять гроші</em>.</h1>
+      <p class="sub">Не просто канал — повна система монетизації.<br>Для експертів, бізнесу та онлайн-шкіл України.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-gold" href="#contact">Отримати безкоштовний аудит</a>
+        <a class="btn btn-ghost" href="#cases">Дивитись кейси ↓</a>
+      </div>
+      <div class="counters">
+        <div class="counter"><div class="num"><span data-count="120">0</span><i>+</i></div><div class="cap">клієнтів</div></div>
+        <div class="counter"><div class="num"><i>$</i><span data-count="3.4" data-dec="1">0</span><i>M+</i></div><div class="cap">виручки клієнтам</div></div>
+        <div class="counter"><div class="num"><span data-count="5">0</span><i>+</i></div><div class="cap">років на ринку</div></div>
+      </div>
+    </div>
+    <div class="tg-mock rv">
+      <div class="tg-head">
+        <div class="tg-ava"><svg viewBox="0 0 100 100"><g fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"><path d="M50 12a38 38 0 0 1 32.9 19"/><path d="M88 50a38 38 0 0 1-19 32.9"/><path d="M50 88a38 38 0 0 1-32.9-19"/><path d="M12 50a38 38 0 0 1 19-32.9"/></g><g fill="#fff"><circle cx="50" cy="19" r="7"/><circle cx="81" cy="50" r="7"/><circle cx="50" cy="81" r="7"/><circle cx="19" cy="50" r="7"/></g></svg></div>
+        <div><div class="t1">Rodychi Media</div><div class="t2" id="tg-subs">12 460 підписників</div></div>
+      </div>
+      <video class="tg-video" src="rodychi_hero.mp4" autoplay loop muted playsinline aria-hidden="true"></video>
+      <div class="tg-msgs">
+        <div class="tg-msg"><b>Кейс тижня:</b> психолог з Києва — $14 000 за 4 місяці через Telegram-воронку 📈<div class="meta"><span>👁 8.2K</span><span>❤️ 312</span></div></div>
+        <div class="tg-msg">CPL у Telegram — <b>$0.40</b> проти $4.20 у Meta. У 10 разів дешевше повертати клієнтів.<div class="meta"><span>👁 6.7K</span><span>🔥 198</span></div></div>
+      </div>
+      <div class="tg-stats">
+        <div class="tg-stat"><div class="v" id="st1">0%</div><div class="k">відкриваність</div></div>
+        <div class="tg-stat"><div class="v" id="st2">0x</div><div class="k">ROAS</div></div>
+        <div class="tg-stat"><div class="v" id="st3">−0%</div><div class="k">CPL</div></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST STRIP -->
+<div class="strip">
+  <p>Нам довіряють експерти та бізнес по всій Україні</p>
+  <div class="marquee" id="marquee">
+    <span>Elen Studio • Школа Маркетингу • Психологи UA • FitLife Studio • LawPro Київ • Nutri Expert • Beauty Lab Одеса • MedCenter Plus • Coach House • SmartSchool •&nbsp;</span>
+  </div>
+</div>
+
+<!-- SEGMENTS -->
+<section id="segments">
+  <div class="wrap">
+    <span class="label rv">Для кого</span>
+    <h2 class="h2 rv">Три сегменти. Три воронки.<br>Один результат — гроші.</h2>
+    <p class="sub rv">Ми не робимо "канали для всіх". Під кожен сегмент — своя екосистема, перевірена на реальних кейсах.</p>
+    <div class="cards3">
+      <div class="seg rv">
+        <div class="ico">🧑‍💼</div>
+        <h3>Експерти та мікроблогери</h3>
+        <div class="who">Психологи, коучи, юристи, нутриціологи, фітнес</div>
+        <div class="pair prob"><b>Проблема</b><p>Instagram більше не конвертує. Аудиторія є — грошей немає.</p></div>
+        <div class="pair sol"><b>Рішення</b><p>Переносимо аудиторію в Telegram і будуємо воронку продажів.</p></div>
+        <div class="res">Кейс: Олена — від 8K в Instagram до <b>$14 000</b> за 4 місяці</div>
+        <a href="#guides">Детальніше →</a>
+      </div>
+      <div class="seg rv">
+        <div class="ico">🏢</div>
+        <h3>Локальний бізнес</h3>
+        <div class="who">Б'юті, клініки, фітнес-студії, медцентри</div>
+        <div class="pair prob"><b>Проблема</b><p>Meta дорожчає. CPL виріс на +184% за 18 місяців.</p></div>
+        <div class="pair sol"><b>Рішення</b><p>Зв'язка Telegram + Meta. Meta залучає, Telegram повертає.</p></div>
+        <div class="res">Кейс: Elen Studio — <b>$2 800 → $11 400/міс</b> за 3 місяці</div>
+        <a href="#guides">Детальніше →</a>
+      </div>
+      <div class="seg rv">
+        <div class="ico">🎓</div>
+        <h3>Онлайн-школи та продюсери</h3>
+        <div class="who">Засновники шкіл, продюсери, інфобізнес</div>
+        <div class="pair prob"><b>Проблема</b><p>73% шкіл тримаються на одній воронці — це ризик.</p></div>
+        <div class="pair sol"><b>Рішення</b><p>Друга воронка через Telegram — +30–50% доходу.</p></div>
+        <div class="res">Кейс: школа маркетингу — <b>+35% доходу</b> за 4 місяці</div>
+        <a href="#guides">Детальніше →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="wrap">
+    <span class="label rv">Як ми працюємо</span>
+    <h2 class="h2 rv">Від діагностики до монетизації — 5 кроків</h2>
+    <div class="steps">
+      <div class="step rv"><div class="n">01</div><h3>Діагностика</h3><p>Аналізуємо вашу ситуацію, аудиторію, воронку.</p><span class="free">Безкоштовно</span></div>
+      <div class="step rv"><div class="n">02</div><h3>Стратегія</h3><p>Розробляємо екосистему під ваш сегмент.</p></div>
+      <div class="step rv"><div class="n">03</div><h3>Запуск</h3><p>Канал + бот + автоворонка під ключ.</p></div>
+      <div class="step rv"><div class="n">04</div><h3>Контент</h3><p>Контент-стратегія і ведення каналу.</p></div>
+      <div class="step rv"><div class="n">05</div><h3>Монетизація</h3><p>Підключаємо джерела доходу, рахуємо ROAS.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="wrap">
+    <span class="label rv">Кейси</span>
+    <h2 class="h2 rv">Реальні цифри. Реальні клієнти.</h2>
+    <div class="filters rv">
+      <button class="act" data-f="all">Всі</button>
+      <button data-f="expert">Expert</button>
+      <button data-f="business">Business</button>
+      <button data-f="school">School</button>
+    </div>
+    <div class="cases-grid">
+      <div class="case rv" data-c="expert">
+        <span class="tag">Expert</span>
+        <h3>Від 8K Instagram до $14 000 — психолог, Київ</h3>
+        <div class="metrics">
+          <span><b>5 800</b> підписників TG</span><span><b>$14 000</b> виручки</span>
+          <span>CPL <b>−68%</b></span><span>ROAS <b>6.5x</b></span><span><b>23 дні</b> окупність</span>
+        </div>
+        <div class="budget">Бюджет: <b>$1 800</b> · 4 місяці</div>
+      </div>
+      <div class="case rv" data-c="business">
+        <span class="tag">Business</span>
+        <h3>З $2 800 до $11 400/міс — б'юті-салон, Київ</h3>
+        <div class="metrics">
+          <span>виручка <b>+307%</b></span><span>повторні <b>+148%</b></span>
+          <span>CPL <b>−71%</b></span><span>CR <b>21%</b></span><span>LTV <b>+82%</b></span>
+        </div>
+        <div class="budget">Бюджет: <b>$1 200</b> · 3 місяці</div>
+      </div>
+      <div class="case rv" data-c="school">
+        <span class="tag">School</span>
+        <h3>+35% доходу на другій воронці — онлайн-школа маркетингу</h3>
+        <div class="metrics">
+          <span>повторні <b>+220%</b></span><span>LTV <b>+78%</b></span>
+          <span>преміум-чек <b>$1 500</b></span><span><b>21 день</b> окупність</span>
+        </div>
+        <div class="budget">Бюджет: <b>$2 400</b> · 4 місяці</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <span class="label rv">Послуги</span>
+    <h2 class="h2 rv">Що входить в екосистему</h2>
+    <div class="srv-grid">
+      <div class="srv rv"><div class="ic">📣</div><h3>Telegram-канал під ключ</h3><p>Стратегія + оформлення + контент-план. Канал, який продає, а не просто існує.</p></div>
+      <div class="srv rv"><div class="ic">🤖</div><h3>Бот-провідник та автоворонка</h3><p>Налаштовуємо один раз — працює завжди. Прогрів від PDF до продажу за 14 днів.</p></div>
+      <div class="srv rv"><div class="ic">🔗</div><h3>Зв'язка Telegram + Meta</h3><p>Meta залучає нових, Telegram повертає за $0. CPL для повторних −90%.</p></div>
+      <div class="srv rv"><div class="ic">✍️</div><h3>Контент-стратегія та ведення</h3><p>Щоденний контент, який рухає підписника до покупки. Не "корисність" — продажі.</p></div>
+      <div class="srv rv"><div class="ic">🎓</div><h3>Запуск онлайн-школи в Telegram</h3><p>Друга воронка: ком'юніті + чат випускників + преміум-продукти. +30–50% доходу.</p></div>
+      <div class="srv rv"><div class="ic">🔍</div><h3>Аудит та консультація</h3><p>Розберемо вашу ситуацію і покажемо, де ви втрачаєте гроші.</p><span class="free-b">Безкоштовно</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM / SOLUTION -->
+<section>
+  <div class="wrap">
+    <span class="label rv">Знайомо?</span>
+    <h2 class="h2 rv">Проблема → Рішення</h2>
+    <div class="chat">
+      <div class="bub q rv"><div class="from">Проблема</div>«Є аудиторія в Instagram, але продажів немає»</div>
+      <div class="bub a rv"><div class="from">Rodychi Media</div>Переносимо аудиторію в Telegram і будуємо воронку. Середній чек зростає з <b>$40 до $250</b>.</div>
+      <div class="bub q rv"><div class="from">Проблема</div>«Реклама в Meta дорожчає, клієнт коштує все більше»</div>
+      <div class="bub a rv"><div class="from">Rodychi Media</div>Зв'язка Telegram + Meta: Meta залучає, Telegram повертає за <b>$0 CPL</b> для повторних клієнтів.</div>
+      <div class="bub q rv"><div class="from">Проблема</div>«Зробили канал — нічого не відбувається»</div>
+      <div class="bub a rv"><div class="from">Rodychi Media</div>Канал без стратегії і воронки — це просто папка. Ми будуємо <b>систему</b>, а не просто канал.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GUIDES -->
+<section class="services" id="guides">
+  <div class="wrap">
+    <span class="label rv">Безкоштовні гайди</span>
+    <h2 class="h2 rv">Забери безкоштовний гайд під свою нішу</h2>
+    <p class="sub rv">Конкретні плани з цифрами, чек-листами та реальними кейсами. Без води.</p>
+    <div class="guides-grid">
+      <div class="guide rv">
+        <div class="pdf-prev"><div class="pl">Персональний гайд · 16 стор</div><div class="pt">Як перенести аудиторію з Instagram у Telegram за 30 днів</div><div class="pp">І почати продавати удвічі більше</div></div>
+        <div class="g-tag">Для експертів</div>
+        <p>План міграції по тижнях, воронка, прайсинг і кейс психолога: $14 000 за 4 місяці.</p>
+        <a class="btn btn-blue" href="Rodychi_Expert_TG_Guide_v7.pdf" target="_blank">Отримати гайд</a>
+      </div>
+      <div class="guide rv">
+        <div class="pdf-prev"><div class="pl">Персональний гайд · 15 стор</div><div class="pt">Як знизити вартість клієнта вдвічі</div><div class="pp">Зв'язка Telegram + Meta для локального бізнесу</div></div>
+        <div class="g-tag">Для бізнесу</div>
+        <p>План впровадження за 60 днів, множення LTV у 5 разів і кейс б'юті-салону: +307% виручки.</p>
+        <a class="btn btn-blue" href="Rodychi_Business_TG_Meta_v7.pdf" target="_blank">Отримати гайд</a>
+      </div>
+      <div class="guide rv">
+        <div class="pdf-prev"><div class="pl">Персональний гайд · 14 стор</div><div class="pt">Друга воронка для онлайн-школи</div><div class="pp">+30–50% доходу за 4–6 місяців</div></div>
+        <div class="g-tag">Для шкіл і продюсерів</div>
+        <p>Архітектура другої воронки, 4 способи заробити з тих самих учнів і кейс школи: +35% доходу.</p>
+        <a class="btn btn-blue" href="Rodychi_School_Second_Funnel_v7.pdf" target="_blank">Отримати гайд</a>
+      </div>
+    </div>
+    <p class="cta-or rv" style="text-align:center">Зручніше в Telegram? <a href="https://t.me/rodychi" style="color:var(--accent2);font-weight:700">Отримати гайд у боті @rodychi →</a></p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="founder rv">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <g fill="none" stroke="#4E82EB" stroke-width="9" stroke-linecap="round">
+          <path d="M50 12a38 38 0 0 1 32.9 19"/><path d="M88 50a38 38 0 0 1-19 32.9"/>
+          <path d="M50 88a38 38 0 0 1-32.9-19"/><path d="M12 50a38 38 0 0 1 19-32.9"/>
+        </g>
+        <g fill="#4E82EB"><circle cx="50" cy="19" r="7"/><circle cx="81" cy="50" r="7"/><circle cx="50" cy="81" r="7"/><circle cx="19" cy="50" r="7"/></g>
+      </svg>
+      <div class="badge"><b>Даніл</b><span>Фаундер Rodychi Media</span></div>
+    </div>
+    <div class="about-txt">
+      <span class="label rv">Про нас</span>
+      <p class="big rv">Я — Даніл, фаундер Rodychi Media. Будуємо Telegram-екосистеми для українського бізнесу. <b>Показую як це працює — публічно, з цифрами.</b></p>
+      <div class="about-nums rv">
+        <div class="an"><b>120+</b><span>клієнтів</span></div>
+        <div class="an"><b>$3.4M+</b><span>виручки клієнтам</span></div>
+        <div class="an"><b>5+</b><span>років на ринку</span></div>
+      </div>
+      <div class="socials rv">
+        <a href="https://t.me/rodychi" target="_blank">✈️ Telegram @rodychi</a>
+        <a href="https://instagram.com/rodychi" target="_blank">📸 Instagram</a>
+        <a href="https://tiktok.com/@rodychi" target="_blank">🎬 TikTok</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section>
+  <div class="wrap">
+    <span class="label rv">Відгуки</span>
+    <h2 class="h2 rv">Що кажуть клієнти</h2>
+    <div class="rev-grid">
+      <div class="rev rv">
+        <div class="stars">★★★★★</div>
+        <p>«За 4 місяці у Telegram я заробила більше, ніж за весь попередній рік в Instagram.»</p>
+        <div class="who"><div class="av">О</div><div><b>Олена</b><span>Психолог, Київ</span></div></div>
+      </div>
+      <div class="rev rv">
+        <div class="stars">★★★★★</div>
+        <p>«Раніше я платила Meta за кожного клієнта знову. Тепер 35% виручки приходить з Telegram-розсилок за $0.»</p>
+        <div class="who"><div class="av">Е</div><div><b>Елена</b><span>Elen Studio, б'юті-салон</span></div></div>
+      </div>
+      <div class="rev rv">
+        <div class="stars">★★★★★</div>
+        <p>«Раніше випускники йшли і не поверталися. Тепер вони залишаються в ком'юніті і купують наступні курси.»</p>
+        <div class="who"><div class="av">О</div><div><b>Олександр</b><span>Засновник онлайн-школи</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="contact">
+  <div class="wrap">
+    <h2 class="rv">Готові побудувати вашу Telegram-екосистему?</h2>
+    <p class="sub rv" style="text-align:center;max-width:560px">Одна година безкоштовної консультації — розберемо вашу ситуацію і покажемо план.</p>
+    <a class="btn btn-gold rv" href="https://t.me/rodychi" target="_blank" style="font-size:18px;padding:19px 40px">✈️ Написати в Telegram</a>
+    <p class="cta-or rv">або залиште контакти — ми напишемо першими</p>
+    <form class="cta-form rv" id="leadform">
+      <div class="row">
+        <input type="text" name="name" placeholder="Ім'я" required>
+        <input type="text" name="contact" placeholder="Telegram або телефон" required>
+      </div>
+      <select name="niche" required>
+        <option value="" disabled selected>Оберіть нішу</option>
+        <option>Експерт / мікроблогер</option>
+        <option>Локальний бізнес</option>
+        <option>Онлайн-школа / продюсер</option>
+        <option>Інше</option>
+      </select>
+      <button class="btn btn-blue" type="submit">Відправити заявку</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#top">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <g fill="none" stroke="#4E82EB" stroke-width="9" stroke-linecap="round">
+              <path d="M50 12a38 38 0 0 1 32.9 19"/><path d="M88 50a38 38 0 0 1-19 32.9"/>
+              <path d="M50 88a38 38 0 0 1-32.9-19"/><path d="M12 50a38 38 0 0 1 19-32.9"/>
+            </g>
+            <g fill="#4E82EB"><circle cx="50" cy="19" r="7"/><circle cx="81" cy="50" r="7"/><circle cx="50" cy="81" r="7"/><circle cx="19" cy="50" r="7"/></g>
+          </svg>
+          <b>RODYCHI<span>m e d i a</span></b>
+        </a>
+        <p class="foot-desc">Telegram-екосистеми, які приносять гроші. Для експертів, бізнесу та онлайн-шкіл України.</p>
+      </div>
+      <div>
+        <h4>Навігація</h4>
+        <ul><li><a href="#services">Послуги</a></li><li><a href="#cases">Кейси</a></li><li><a href="#segments">Для кого</a></li><li><a href="#guides">Гайди</a></li></ul>
+      </div>
+      <div>
+        <h4>Контакти</h4>
+        <ul>
+          <li><a href="https://t.me/rodychi" target="_blank">Telegram @rodychi</a></li>
+          <li><a href="mailto:hello@rodychi.media">hello@rodychi.media</a></li>
+          <li><a href="https://instagram.com/rodychi" target="_blank">Instagram</a></li>
+          <li><a href="https://tiktok.com/@rodychi" target="_blank">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy"><span>© 2026 Rodychi Media. Всі права захищені.</span><span>rodychi.media</span></div>
+  </div>
+</footer>
+
+<script>
+/* reveal on scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* counters */
+function animNum(el,target,dec,suffix){
+  const dur=1800,t0=performance.now();
+  function tick(t){
+    const p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);
+    el.textContent=(target*e).toFixed(dec);
+    if(p<1)requestAnimationFrame(tick);else el.textContent=target.toFixed(dec)+(suffix||'');
+  }
+  requestAnimationFrame(tick);
+}
+const cio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.querySelectorAll('[data-count]').forEach(s=>{
+      animNum(s,parseFloat(s.dataset.count),parseInt(s.dataset.dec||0));
+    });
+    cio.unobserve(e.target);
+  }
+}),{threshold:.4});
+const cwrap=document.querySelector('.counters');if(cwrap)cio.observe(cwrap);
+
+/* TG mock stats */
+const tio=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    let s1=0,s2=0,s3=0,subs=11900;
+    const iv=setInterval(()=>{
+      if(s1<95)s1+=5;if(s2<6.5)s2+=.5;if(s3<68)s3+=4;if(subs<12460)subs+=40;
+      document.getElementById('st1').textContent=Math.min(s1,95)+'%';
+      document.getElementById('st2').textContent=Math.min(s2,6.5).toFixed(1)+'x';
+      document.getElementById('st3').textContent='−'+Math.min(s3,68)+'%';
+      document.getElementById('tg-subs').textContent=Math.min(subs,12460).toLocaleString('uk-UA')+' підписників';
+      if(s1>=95&&s2>=6.5&&s3>=68&&subs>=12460)clearInterval(iv);
+    },60);
+    tio.unobserve(e.target);
+  }
+}),{threshold:.4});
+const tgm=document.querySelector('.tg-mock');if(tgm)tio.observe(tgm);
+
+/* marquee duplicate */
+const mq=document.getElementById('marquee');
+if(mq)mq.innerHTML+=mq.innerHTML;
+
+/* case filter */
+document.querySelectorAll('.filters button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filters button').forEach(x=>x.classList.remove('act'));
+  b.classList.add('act');
+  const f=b.dataset.f;
+  document.querySelectorAll('.case').forEach(c=>{
+    c.classList.toggle('hide',f!=='all'&&c.dataset.c!==f);
+  });
+}));
+
+/* burger */
+const burger=document.getElementById('burger'),mmenu=document.getElementById('mmenu');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');mmenu.classList.toggle('open')});
+mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mmenu.classList.remove('open')}));
+
+/* lead form → telegram */
+document.getElementById('leadform').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=e.target;
+  const msg=encodeURIComponent(`Привіт! Хочу консультацію.\nІм'я: ${f.name.value}\nКонтакт: ${f.contact.value}\nНіша: ${f.niche.value}`);
+  window.open('https://t.me/rodychi?text='+msg,'_blank');
+  f.reset();
+});
+
+/* TODO: вставити GA4 + Meta Pixel перед деплоєм
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"><\/script> */
+</script>
+</body>
+</html>
