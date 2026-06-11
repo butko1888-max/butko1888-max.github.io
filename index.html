@@ -46,7 +46,7 @@ section{padding:110px 0;position:relative;overflow:hidden}
 .btn-line{background:rgba(255,255,255,.02);color:#E7EDFC;border:1px solid rgba(255,255,255,.16)}
 .btn-line:hover{border-color:var(--accent2);background:rgba(38,88,210,.12)}
 /* ---------- global backdrop ---------- */
-.backdrop{position:fixed;inset:0;z-index:-2;background:
+.backdrop{position:fixed;inset:0;z-index:-2;transform:translateZ(0);background:
   radial-gradient(1000px 700px at 85% -10%, rgba(40,90,215,.16), transparent 62%),
   radial-gradient(800px 600px at -12% 30%, rgba(40,90,215,.10), transparent 60%),
   radial-gradient(900px 700px at 105% 85%, rgba(98,64,200,.09), transparent 60%),
@@ -150,8 +150,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(6,11,34,.72)
 /* ---------- BRAND WALL ---------- */
 .strip{padding:42px 0 46px;border-top:1px solid rgba(120,155,235,.1);border-bottom:1px solid rgba(120,155,235,.1);overflow:hidden;background:rgba(8,14,40,.55)}
 .strip p{text-align:center;color:var(--muted);font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:26px}
-.mq-wrap{position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.marquee{display:flex;width:max-content;animation:scroll 36s linear infinite}
+.mq-wrap{position:relative;overflow:hidden}
+.mq-wrap::before,.mq-wrap::after{content:"";position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
+.mq-wrap::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.mq-wrap::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
+.marquee{display:flex;width:max-content;animation:scroll 36s linear infinite;will-change:transform}
 .marquee:hover{animation-play-state:paused}
 .mq-set{display:flex;align-items:center;gap:64px;padding-right:64px}
 .brand{display:flex;align-items:center;gap:10px;white-space:nowrap;opacity:.5;filter:grayscale(.4);transition:.3s}
