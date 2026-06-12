@@ -3,4 +3,4 @@ Rodychi Media — Telegram-агенція повного циклу. Сайт: h
 
 v4
 v5
- fixv6
+ fix v7v6
