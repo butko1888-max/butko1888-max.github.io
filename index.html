@@ -75,6 +75,29 @@ section{padding:120px 0;position:relative;overflow:hidden}
 /* vertical side words */
 .side-word{position:absolute;top:120px;left:8px;writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Unbounded',sans-serif;font-weight:900;font-size:72px;letter-spacing:.04em;color:transparent;-webkit-text-stroke:1px rgba(125,158,235,.14);user-select:none;pointer-events:none;line-height:1}
 .side-word.sw-r{left:auto;right:8px;transform:none}
+/* slider nav arrows */
+.snav-wrap{display:none;gap:10px;align-items:center}
+.snav{width:46px;height:46px;border-radius:50%;border:1px solid var(--br2);background:rgba(255,255,255,.03);color:#fff;font-size:17px;cursor:pointer;transition:.25s;flex-shrink:0}
+.snav:hover{background:#fff;color:#05091D}
+.swipe-hint{display:none;font-size:12px;color:var(--muted);letter-spacing:.06em;margin-top:14px;text-align:center}
+/* gold guides */
+#guides .guide{border-color:rgba(215,175,95,.3);background:linear-gradient(168deg,rgba(54,44,20,.32),rgba(11,18,51,.7))}
+#guides .guide:hover{border-color:rgba(215,175,95,.6);box-shadow:0 22px 60px rgba(215,175,95,.14)}
+#guides .g-tag{color:var(--gold)}
+.gold-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(215,175,95,.13);border:1px solid rgba(215,175,95,.4);color:#EFD9A8;border-radius:999px;padding:7px 16px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
+.gold-badge i{width:7px;height:7px;border-radius:50%;background:var(--gold);font-style:normal}
+/* bento variety */
+.bx.t-blue{background:linear-gradient(150deg,rgba(46,98,221,.3),rgba(11,18,51,.6));border-color:rgba(125,158,235,.35)}
+.bx.t-gold{background:linear-gradient(150deg,rgba(215,175,95,.12),rgba(11,18,51,.6));border-color:rgba(215,175,95,.3)}
+.bx.t-gold .idx{color:#EFD9A8}
+.bx.t-line{background:transparent;border-style:dashed;border-color:rgba(125,158,235,.35)}
+.bx.t-violet{background:linear-gradient(150deg,rgba(110,64,225,.2),rgba(11,18,51,.6));border-color:rgba(150,110,240,.32)}
+/* CTA panel boost */
+.cta-panel{border:none}
+.cta-panel::after{content:"";position:absolute;inset:0;border-radius:34px;padding:1.5px;background:linear-gradient(120deg,#3E74F2,rgba(125,158,235,.15),#D7AF5F,rgba(125,158,235,.15),#3E74F2);background-size:300% 300%;animation:bshift 7s linear infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+@keyframes bshift{to{background-position:300% 0}}
+.cta-pulse{animation:ctap 2.6s ease-in-out infinite}
+@keyframes ctap{0%,100%{box-shadow:0 10px 30px rgba(38,88,210,.35)}50%{box-shadow:0 10px 48px rgba(94,139,240,.65)}}
 /* mobile bottom CTA */
 .mcta{display:none;position:fixed;left:14px;right:14px;bottom:14px;z-index:95;justify-content:center;align-items:center;gap:8px;padding:16px;border-radius:999px;font-weight:700;font-size:15px;color:#05091D;background:#fff;box-shadow:0 14px 40px rgba(0,0,0,.5);transform:translateY(90px);transition:transform .35s}
 .mcta.show{transform:none}
@@ -118,6 +141,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,9,29,.7);b
 .counter .num{font-family:'Unbounded',sans-serif;font-size:clamp(28px,3.6vw,42px);font-weight:800}
 .counter .num i{font-style:normal;color:var(--accent2)}
 .counter .cap{color:var(--muted);font-size:13px;margin-top:2px}
+/* hero: 3D spinning logo coin */
+.hero-kicker{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin-bottom:22px}
+.coin-scene{perspective:1300px;display:flex;justify-content:center;align-items:center;position:relative}
+.coin-scene::after{content:"";position:absolute;bottom:-8%;width:55%;height:36px;background:radial-gradient(ellipse,rgba(46,98,221,.45),transparent 70%);filter:blur(16px)}
+.coin{width:min(360px,72vw);aspect-ratio:1;position:relative;transform-style:preserve-3d;animation:coinspin 9s linear infinite}
+.coin img{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;backface-visibility:hidden;
+  box-shadow:0 0 0 1px rgba(140,175,255,.4), 0 0 70px rgba(46,98,221,.4)}
+.coin img.cb{transform:rotateY(180deg)}
+@keyframes coinspin{to{transform:rotateY(360deg)}}
 /* hero visual: video orb */
 .hero-visual{position:relative;display:flex;justify-content:center;align-items:center;min-height:440px}
 .hero-orb{width:min(400px,80vw);aspect-ratio:1;border-radius:50%;overflow:hidden;position:relative;animation:floaty 7s ease-in-out infinite;
@@ -129,6 +161,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,9,29,.7);b
 .orb-stat span{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
 .os1{top:6%;left:0;animation-delay:1.1s}
 .os2{bottom:8%;right:0;animation-delay:2.2s}
+/* pain grid: phone + chat */
+.pain-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:46px;align-items:start}
+.pain-grid .chat{margin:0}
+.pain-grid .phone-scene{position:sticky;top:110px}
 /* iPhone */
 .phone-scene{perspective:1600px;display:flex;justify-content:center;position:relative;padding:10px 0}
 .phone-scene::after{content:"";position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);width:58%;height:40px;background:radial-gradient(ellipse,rgba(38,88,210,.4),transparent 70%);filter:blur(14px)}
@@ -281,8 +317,9 @@ a.row{color:inherit}
 .c-chips span{font-size:12px;font-weight:600;color:#D8E2FA;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:5px 12px}
 .c-chips span.hl{color:var(--green);border-color:rgba(111,207,151,.3);background:rgba(111,207,151,.07)}
 /* ===== PROCESS TIMELINE ===== */
-.tl{position:relative;margin-top:26px;z-index:1}
-.tl::before{content:"";position:absolute;top:7px;left:0;right:0;height:1.5px;background:linear-gradient(90deg,var(--accent2),rgba(125,158,235,.15))}
+.tl{position:relative;margin-top:26px;z-index:1;--p:0}
+.tl::before{content:"";position:absolute;top:7px;left:0;right:0;height:1.5px;background:rgba(125,158,235,.15)}
+.tl::after{content:"";position:absolute;top:6px;left:0;height:3.5px;border-radius:4px;width:calc(var(--p)*1%);background:linear-gradient(90deg,#3E74F2,#9DBCFF,#D7AF5F);box-shadow:0 0 14px rgba(94,139,240,.8);transition:width .15s linear}
 .tl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
 .tls{padding-top:34px;position:relative}
 .tls::before{content:"";position:absolute;top:0;left:0;width:15px;height:15px;border-radius:50%;background:var(--bg);border:2.5px solid var(--accent2);transition:.3s}
@@ -418,6 +455,14 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
   .side-word{display:none}
   .mcta{display:flex}
   #toTop{bottom:86px}
+  .snav-wrap{display:flex}
+  .swipe-hint{display:block}
+  .coin{width:min(230px,62vw)}
+  .coin-scene{margin-top:8px}
+  .pain-grid{grid-template-columns:1fr;gap:30px}
+  .pain-grid .phone-scene{position:static}
+  .pain-grid .phone{width:min(230px,64vw)}
+  .ghost{display:none}
   .ns+.ns{border-left:none;border-top:1px solid var(--br)}
   .tl-grid{grid-template-columns:1fr;row-gap:30px}
   .row{grid-template-columns:42px 1fr 30px;gap:10px}
@@ -473,25 +518,18 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
   <div class="beam"></div>
   <div class="wrap hero-grid">
     <div>
-      <div class="hero-badge"><i></i>Telegram-агенція повного циклу · Україна</div>
-      <h1>Будуємо Telegram-екосистеми, які <span class="grad">продають за вас</span></h1>
-      <p class="sub">Канал, трафік, бот і воронка під ключ. Система прогріває аудиторію та закриває заявки 24/7 — поки ви займаєтесь продуктом.</p>
+      <p class="hero-kicker">Telegram-агенція повного циклу</p>
+      <h1>Впроваджуємо досвід, що <span class="grad">розганяє бізнес</span> у Telegram</h1>
+      <p class="sub">Знання 120+ проєктів — у ваш канал, трафік і воронку. Закриваємо болі: дорогі ліди, мовчазна база, заявки без системи.</p>
       <div class="hero-ctas">
-        <a class="btn btn-pri" href="#contact">Отримати безкоштовний аудит <span class="ar">→</span></a>
-        <a class="btn btn-line" href="#cases">Дивитись кейси</a>
-      </div>
-      <div class="counters">
-        <div class="counter"><div class="num"><span data-count="120">0</span><i>+</i></div><div class="cap">клієнтів</div></div>
-        <div class="counter"><div class="num"><i>$</i><span data-count="3.4" data-dec="1">0</span><i>M+</i></div><div class="cap">виручки клієнтам</div></div>
-        <div class="counter"><div class="num"><span data-count="8">0</span></div><div class="cap">напрямків послуг</div></div>
+        <a class="btn btn-line" href="#cases">Дивитись кейси <span class="ar">↓</span></a>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="hero-orb">
-        <video src="rodychi_hero.mp4" autoplay loop muted playsinline aria-hidden="true"></video>
+    <div class="coin-scene">
+      <div class="coin">
+        <img src="logo.png" alt="" class="cf">
+        <img src="logo.png" alt="" class="cb">
       </div>
-      <div class="orb-stat os1"><b id="hs1">95%</b><span>відкриваність постів</span></div>
-      <div class="orb-stat os2"><b id="hs2">6.5x</b><span>середній ROAS воронок</span></div>
     </div>
   </div>
 </header>
@@ -499,7 +537,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
 <!-- BIG OUTLINE MARQUEE -->
 <div class="bigmq">
   <div class="track" id="bigtrack">
-    <span>КАНАЛИ ПІД КЛЮЧ <i>◆</i> TELEGRAM ADS <i>◆</i> БОТИ ТА АВТОВОРОНКИ <i>◆</i> ЗАКУП РЕКЛАМИ <i>◆</i> МОНЕТИЗАЦІЯ <i>◆</i> </span>
+    <span>КАНАЛИ ПІД КЛЮЧ <i>◆</i> TELEGRAM ADS <i>◆</i> БОТИ ТА АВТОВОРОНКИ <i>◆</i> ЗАКУП РЕКЛАМИ <i>◆</i> АВТОМАТИЗАЦІЯ <i>◆</i> </span>
   </div>
 </div>
 
@@ -549,6 +587,28 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
       <div class="lft"><span class="label">Болі, які ми закриваємо</span><h2 class="h2">Впізнаєте себе?</h2></div>
       <div class="ghost">02</div>
     </div>
+    <div class="pain-grid">
+    <div class="phone-scene">
+      <div class="phone" id="phone">
+        <div class="sbtn b1"></div><div class="sbtn b2"></div><div class="sbtn b3"></div>
+        <div class="island"></div>
+        <div class="ph-head">
+          <div class="ph-ava"><video src="rodychi_hero.mp4" autoplay loop muted playsinline></video></div>
+          <div><div class="t1">Rodychi Media</div><div class="t2" id="tg-subs">12 460 підписників</div></div>
+        </div>
+        <div class="ph-body">
+          <div class="ph-post"><video src="rodychi_hero.mp4" autoplay loop muted playsinline></video></div>
+          <div class="ph-msg"><b>Кейс тижня:</b> психолог з Києва — $14 000 за 4 місяці через TG-воронку<div class="meta"><span>8.2K переглядів</span><span>312 реакцій</span></div></div>
+          <div class="ph-stats">
+            <div class="ph-stat"><div class="v" id="st1">0%</div><div class="k">відкрив.</div></div>
+            <div class="ph-stat"><div class="v" id="st2">0x</div><div class="k">ROAS</div></div>
+            <div class="ph-stat"><div class="v" id="st3">−0%</div><div class="k">CPL</div></div>
+          </div>
+        </div>
+        <div class="ph-input"><span>Повідомлення…</span><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l18-8-8 18-2.5-7.5L3 11z" stroke="#5C8BF0" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <div class="ph-home"></div>
+      </div>
+    </div>
     <div class="chat">
       <div class="bub q rv"><div class="from">Біль</div>«Є аудиторія в Instagram, але продажів немає»<span class="time">20:34</span></div>
       <div class="bub a rv"><div class="from">Rodychi Media</div>Переносимо аудиторію в Telegram і будуємо воронку. Середній чек наших експертів зростає з <b>$40 до $250</b>.<span class="time">20:36</span></div>
@@ -560,6 +620,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
       <div class="bub a rv"><div class="from">Rodychi Media</div>Перевіряємо канали по ERR, динаміці й джерелах підписників. Закуповуємо по CPM напряму — економія до <b>40% бюджету</b>.<span class="time">20:57</span></div>
       <div class="bub q rv"><div class="from">Біль</div>«Менеджери не встигають відповідати на заявки»<span class="time">21:02</span></div>
       <div class="bub a rv"><div class="from">Rodychi Media</div>Розробляємо бота: квал-питання, запис, оплата, нагадування. У кейсі мережі салонів <b>38% записів</b> проходять без адміністратора.<span class="time">21:04</span></div>
+    </div>
     </div>
   </div>
 </section>
@@ -574,10 +635,10 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
     </div>
     <div class="bento">
       <div class="bx w2 feat rv"><div class="spot"></div><div class="idx">01</div><h3>Telegram-канал під ключ</h3><p>Стратегія, оформлення, контент-план і запуск. Канал, який продає, а не просто існує.</p></div>
-      <div class="bx rv"><div class="spot"></div><div class="idx">02</div><h3>Telegram Ads</h3><p>Офіційний таргет від CPM €0.4: інтереси, гео, мова.</p></div>
-      <div class="bx rv"><div class="spot"></div><div class="idx">03</div><h3>Закуп реклами</h3><p>Посіви у перевірених каналах по CPM напряму — без переплат.</p></div>
-      <div class="bx rv"><div class="spot"></div><div class="idx">04</div><h3>Розробка TG-ботів</h3><p>Автоворонки, запис, оплати, CRM. Налаштували раз — працює завжди.</p></div>
-      <div class="bx rv"><div class="spot"></div><div class="idx">05</div><h3>Telegram + Meta</h3><p>Meta залучає нових, Telegram повертає за $0. CPL повторних −90%.</p></div>
+      <div class="bx t-blue rv"><div class="spot"></div><div class="idx">02</div><h3>Telegram Ads</h3><p>Офіційний таргет від CPM €0.4: інтереси, гео, мова.</p></div>
+      <div class="bx t-line rv"><div class="spot"></div><div class="idx">03</div><h3>Закуп реклами</h3><p>Посіви у перевірених каналах по CPM напряму — без переплат.</p></div>
+      <div class="bx t-violet rv"><div class="spot"></div><div class="idx">04</div><h3>Розробка TG-ботів</h3><p>Автоворонки, запис, оплати, CRM. Налаштували раз — працює завжди.</p></div>
+      <div class="bx t-gold rv"><div class="spot"></div><div class="idx">05</div><h3>Telegram + Meta</h3><p>Meta залучає нових, Telegram повертає за $0. CPL повторних −90%.</p></div>
       <div class="bx w2 rv"><div class="spot"></div><div class="idx">06</div><h3>Контент і ведення</h3><p>Щоденний контент, який рухає підписника до покупки. Не «корисність» — продажі. Пишемо, знімаємо, аналізуємо.</p></div>
       <div class="bx rv"><div class="spot"></div><div class="idx">07</div><h3>Воронки для шкіл</h3><p>Ком'юніті, чат випускників, преміум. +30–50% доходу.</p></div>
       <div class="bx w2 rv"><div class="spot"></div><div class="idx">08</div><h3>Стратегія і аналітика</h3><p>Декомпозиція цілей, юніт-економіка, прозорі звіти по CPL/ROAS/LTV щотижня.</p></div>
@@ -617,7 +678,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
   <div class="wrap">
     <div class="sec-head rv">
       <div class="lft"><span class="label">Кейси</span><h2 class="h2">Реальні цифри.<br><span class="grad">Реальні клієнти</span></h2></div>
-      <div class="ghost">05</div>
+      <div class="snav-wrap"><button class="snav prev" data-t="#cases .cases-grid" aria-label="Назад">←</button><button class="snav next" data-t="#cases .cases-grid" aria-label="Вперед">→</button></div>
     </div>
     <div class="filters rv">
       <button class="act" data-f="all">Всі</button>
@@ -672,6 +733,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
         <div class="c-chips"><span class="hl">економія −32%</span><span>9 200 переходів</span></div>
       </div>
     </div>
+    <p class="swipe-hint">Гортай вбік, щоб побачити всі кейси →</p>
   </div>
 </section>
 
@@ -688,7 +750,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
         <div class="tls"><div class="tn">КРОК 02</div><h3>Стратегія</h3><p>Розробляємо екосистему під вашу нішу.</p></div>
         <div class="tls"><div class="tn">КРОК 03</div><h3>Запуск</h3><p>Канал + бот + трафік (TG Ads / посіви) під ключ.</p></div>
         <div class="tls"><div class="tn">КРОК 04</div><h3>Контент</h3><p>Контент-стратегія і ведення каналу.</p></div>
-        <div class="tls"><div class="tn">КРОК 05</div><h3>Монетизація</h3><p>Підключаємо джерела доходу, рахуємо ROAS.</p></div>
+        <div class="tls"><div class="tn">КРОК 05</div><h3>Готова модель</h3><p>Автоматизована система, що працює без вашої участі.</p></div>
       </div>
     </div>
   </div>
@@ -698,8 +760,8 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
 <section id="guides">
   <div class="wrap">
     <div class="sec-head rv">
-      <div class="lft"><span class="label">Безкоштовні гайди</span><h2 class="h2">Забери гайд <span class="grad">під свою нішу</span></h2></div>
-      <div class="ghost">07</div>
+      <div class="lft"><span class="gold-badge"><i></i>Цінність $97 — безкоштовно</span><br><span class="label">Гайди</span><h2 class="h2">Забери гайд <span class="grad">під свою нішу</span></h2></div>
+      <div class="snav-wrap"><button class="snav prev" data-t="#guides .guides-grid" aria-label="Назад">←</button><button class="snav next" data-t="#guides .guides-grid" aria-label="Вперед">→</button></div>
     </div>
     <div class="guides-grid">
       <div class="guide rv">
@@ -721,6 +783,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
         <a class="btn btn-acc" href="Rodychi_School_Second_Funnel_v7.pdf" target="_blank">Отримати гайд <span class="ar">→</span></a>
       </div>
     </div>
+    <p class="swipe-hint">Гортай вбік — три гайди під різні ніші →</p>
     <p class="cta-or rv" style="text-align:center">Зручніше в Telegram? <a href="https://t.me/rodychi" style="color:var(--accent2);font-weight:700">Отримати гайд у боті @rodychi →</a></p>
   </div>
 </section>
@@ -814,7 +877,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
     <div class="cta-panel rv">
       <h2>Готові побудувати вашу <span class="grad">Telegram-екосистему?</span></h2>
       <p class="sub" style="text-align:center;max-width:520px">Одна година безкоштовної консультації — розберемо вашу ситуацію і покажемо план.</p>
-      <a class="btn btn-pri" href="https://t.me/rodychi" target="_blank" style="font-size:16.5px;padding:18px 38px">Написати в Telegram <span class="ar">→</span></a>
+      <a class="btn btn-acc cta-pulse" href="https://t.me/rodychi" target="_blank" style="font-size:17px;padding:19px 42px">Записатись на безкоштовний аудит <span class="ar">→</span></a>
       <p class="cta-or">або залиште контакти — ми напишемо першими</p>
       <form class="cta-form" id="leadform">
         <div class="frow">
@@ -872,8 +935,8 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
 <script>
 /* alternate side-slide directions */
 document.querySelectorAll('.bento .bx,.cases-grid .case,.rows .row,.rev-grid .rev,.guides-grid .guide,.tl-grid .tls,.numstrip .ns').forEach((el,i)=>el.classList.add(i%2?'sr':'sl'));
-/* reveal */
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.1});
+/* reveal — both directions */
+const io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('on',e.isIntersecting)),{threshold:.08,rootMargin:'0px 0px -4% 0px'});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 /* counters */
 function animNum(el,target,dec){
@@ -883,6 +946,7 @@ function animNum(el,target,dec){
     el.textContent=(target*e).toFixed(dec);
     if(p<1)requestAnimationFrame(tick);
   })(t0);
+  setTimeout(()=>{el.textContent=target.toFixed(dec)},dur+200);
 }
 const cio=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){
@@ -969,6 +1033,31 @@ if(matchMedia('(pointer:fine)').matches){
     el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
   });
 }
+/* process line follows scroll (both directions) */
+const tl=document.querySelector('.tl');
+if(tl){
+  addEventListener('scroll',()=>{
+    const r=tl.getBoundingClientRect();
+    const p=Math.min(1,Math.max(0,(innerHeight*.85-r.top)/(r.height+innerHeight*.45)));
+    tl.style.setProperty('--p',(p*100).toFixed(1));
+  },{passive:true});
+}
+/* slider arrows */
+document.querySelectorAll('.snav').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const target=document.querySelector(btn.dataset.t);
+    const card=target.querySelector('.case:not(.hide),.guide');
+    const w=card?card.getBoundingClientRect().width+16:320;
+    target.scrollBy({left:btn.classList.contains('prev')?-w:w,behavior:'smooth'});
+  });
+});
+/* aurora hue shift on scroll */
+const aurs=document.querySelectorAll('.aur');
+addEventListener('scroll',()=>{
+  const h=document.documentElement.scrollHeight-innerHeight;
+  const deg=(scrollY/h*55).toFixed(1);
+  aurs.forEach(a=>a.style.filter=`blur(110px) hue-rotate(${deg}deg)`);
+},{passive:true});
 /* lead form */
 document.getElementById('leadform').addEventListener('submit',e=>{
   e.preventDefault();
