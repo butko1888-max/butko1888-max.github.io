@@ -46,8 +46,9 @@ section{padding:120px 0;position:relative;overflow:hidden}
 .btn-pri:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(255,255,255,.15)}
 .btn-acc{background:linear-gradient(135deg,#3E74F2,#2456CE);color:#fff;box-shadow:0 10px 30px rgba(38,88,210,.35)}
 .btn-acc:hover{transform:translateY(-2px);box-shadow:0 18px 46px rgba(38,88,210,.5)}
-.btn-line{background:rgba(255,255,255,.02);color:#E7EDFC;border:1px solid rgba(255,255,255,.15)}
-.btn-line:hover{border-color:var(--accent2);background:rgba(38,88,210,.12)}
+.btn-line{background:rgba(38,88,210,.12);color:#fff;border:1px solid rgba(94,139,240,.45);font-family:'Unbounded',sans-serif;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:13px;padding:13px 24px}
+.btn-line:hover{border-color:var(--accent2);background:linear-gradient(135deg,rgba(62,116,242,.25),rgba(38,88,210,.18));box-shadow:0 12px 30px rgba(38,88,210,.3)}
+.btn-line .ar{color:var(--gold);font-weight:700}
 /* ===== BACKDROP: aurora, no grid ===== */
 .aur{position:fixed;border-radius:50%;filter:blur(110px);z-index:-2;pointer-events:none}
 .aur.a1{width:62vw;height:62vw;max-width:900px;max-height:900px;background:radial-gradient(circle,rgba(46,98,221,.30),transparent 65%);top:-22vw;right:-18vw;animation:aur1 34s ease-in-out infinite alternate}
@@ -72,11 +73,19 @@ section{padding:120px 0;position:relative;overflow:hidden}
 .bub.q.rv{transform:translateX(-52px)}
 .bub.a.rv{transform:translateX(52px)}
 .rv.on{opacity:1;transform:none!important}
-/* services + chat reveal — bidirectional + service highlight on enter */
-.bx.rv-2,.bub.rv-2{transition:opacity .55s ease,transform .55s cubic-bezier(.2,.8,.3,1),box-shadow .55s,border-color .55s}
-.bx.rv-2{opacity:0;transform:translateY(36px) scale(.97)}
-.bx.rv-2.on{opacity:1;transform:none}
-.bx.rv-2.glow{border-color:var(--accent2);box-shadow:0 22px 60px rgba(46,98,221,.30),0 0 0 1px rgba(94,139,240,.45) inset}
+/* chat bubbles — bidirectional slide from sides */
+.bub.rv-2{opacity:0;transition:opacity .55s ease,transform .55s cubic-bezier(.2,.8,.3,1)}
+.bub.q.rv-2{transform:translateX(-72px)}
+.bub.a.rv-2{transform:translateX(72px)}
+.bub.rv-2.on{opacity:1;transform:translateX(0)}
+/* services bento — scroll-driven focus (current card highlighted, others dim+blur). Mobile only. */
+@media(max-width:768px){
+  .bento .bx{transition:opacity .4s ease,filter .4s,border-color .4s,box-shadow .4s,transform .35s cubic-bezier(.2,.8,.3,1)}
+  .bento .bx.dim{opacity:.32;filter:blur(2px) saturate(.6);transform:scale(.985)}
+  .bento .bx.focus{opacity:1;filter:none;transform:scale(1.015);border-color:var(--accent2);box-shadow:0 28px 70px rgba(46,98,221,.42),0 0 0 1px rgba(94,139,240,.55) inset;z-index:3}
+  .bento .bx.focus .idx{color:#FFD78A}
+  .bento .bx.focus h3{color:#fff;text-shadow:0 0 24px rgba(94,139,240,.5)}
+}
 /* vertical side words */
 .side-word{position:absolute;top:120px;left:8px;writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Unbounded',sans-serif;font-weight:900;font-size:72px;letter-spacing:.04em;color:transparent;-webkit-text-stroke:1px rgba(125,158,235,.14);user-select:none;pointer-events:none;line-height:1}
 .side-word.sw-r{left:auto;right:8px;transform:none}
@@ -268,7 +277,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,9,29,.7);b
 /* ===== SERVICES BENTO ===== */
 .bento{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative;z-index:1}
 .bx{position:relative;border:1px solid var(--br);border-radius:22px;padding:28px 26px;background:rgba(11,18,51,.5);overflow:hidden;transition:border-color .3s,transform .3s}
-.bx:hover{border-color:var(--br2);transform:translateY(-4px);box-shadow:0 22px 60px rgba(46,98,221,.22)}
+@media(hover:hover){.bx:hover{border-color:var(--br2);transform:translateY(-4px);box-shadow:0 22px 60px rgba(46,98,221,.22)}}
+@media(hover:none){.bx .spot{display:none}}
 .bx.feat{box-shadow:0 18px 70px rgba(46,98,221,.16)}
 .bx .spot{position:absolute;inset:0;opacity:0;transition:opacity .35s;pointer-events:none;
   background:radial-gradient(320px 200px at var(--mx,50%) var(--my,50%),rgba(94,139,240,.16),transparent 70%)}
@@ -311,8 +321,14 @@ a.row{color:inherit}
 .case.hide{display:none}
 .case .spot{position:absolute;inset:0;opacity:0;transition:opacity .35s;pointer-events:none;
   background:radial-gradient(360px 240px at var(--mx,50%) var(--my,50%),rgba(94,139,240,.14),transparent 70%)}
-.case:hover .spot{opacity:1}
-.case:hover{border-color:var(--br2);transform:translateY(-4px);box-shadow:0 22px 60px rgba(46,98,221,.2)}
+@media(hover:hover){
+  .case:hover .spot{opacity:1}
+  .case:hover{border-color:var(--br2);transform:translateY(-4px);box-shadow:0 22px 60px rgba(46,98,221,.2)}
+}
+@media(hover:none){
+  .case .spot{display:none}
+  .case:active{transform:none;border-color:var(--br)}
+}
 .case.feat{box-shadow:0 18px 70px rgba(46,98,221,.14)}
 .case.feat{grid-column:span 2;background:linear-gradient(140deg,rgba(31,53,130,.5),rgba(11,18,51,.6))}
 .case.wide{grid-column:span 3;flex-direction:row;align-items:center;gap:34px;flex-wrap:wrap}
@@ -341,8 +357,8 @@ a.row{color:inherit}
 .tl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
 .tls{padding-top:34px;position:relative}
 .tls::before{content:"";position:absolute;top:0;left:0;width:15px;height:15px;border-radius:50%;background:var(--bg);border:2.5px solid var(--accent2);transition:background .35s,box-shadow .35s,border-color .35s,transform .35s}
-.tls:hover::before,.tls.lit::before{background:var(--accent2);border-color:#fff;box-shadow:0 0 18px rgba(94,139,240,.9),0 0 36px rgba(94,139,240,.35);transform:scale(1.18)}
-.tls.lit .tn{color:#EFD9A8;text-shadow:0 0 12px rgba(215,175,95,.4)}
+.tls:hover::before,.tls.lit::before{background:rgba(94,139,240,.55);border-color:rgba(255,255,255,.85);box-shadow:0 0 8px rgba(94,139,240,.45);transform:scale(1.1)}
+.tls.lit .tn{color:#D2DDF8}
 .tls .tn{font-family:'Unbounded',sans-serif;font-size:12px;color:var(--gold);letter-spacing:.22em;margin-bottom:10px}
 .tls h3{font-size:16.5px;font-weight:800;margin-bottom:7px}
 .tls p{font-size:13px;color:var(--muted)}
@@ -478,7 +494,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
   /* mobile timeline: integrated dots ↔ beam (beam grows from first dot center, passes BEHIND middle dots, ends at last dot center) */
   .tl{position:relative;z-index:1}
   .tl::before{display:block;left:6px;right:auto;top:11.5px;bottom:11.5px;width:3px;height:auto;border-radius:3px;background:rgba(125,158,235,.18);z-index:0}
-  .tl::after{display:block;left:6px;right:auto;top:11.5px;width:3px;height:calc(var(--p)*1%);max-height:calc(100% - 23px);background:linear-gradient(180deg,#3E74F2,#9DBCFF,#D7AF5F);border-radius:3px;box-shadow:0 0 12px rgba(94,139,240,.55);transition:height .15s linear;z-index:0}
+  .tl::after{display:block;left:6px;right:auto;top:11.5px;width:3px;height:calc(var(--p)*1%);max-height:calc(100% - 23px);background:linear-gradient(180deg,#3E74F2,#7FA9F2);border-radius:3px;box-shadow:0 0 6px rgba(94,139,240,.35);transition:height .15s linear;z-index:0;opacity:.85}
   .tls{padding-top:0;padding-left:36px;position:relative;z-index:2}
   .tls::before{top:4px;left:0;z-index:3}
   .ghost{display:none}
@@ -563,7 +579,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
           <div class="ph-home"></div>
         </div>
       </div>
-      <a class="btn btn-line" href="#cases">Дивитись кейси <span class="ar">↓</span></a>
+      <a class="btn btn-line" href="#cases">Дивіться кейси <span class="ar">↓</span></a>
     </div>
   </div>
 </header>
@@ -744,7 +760,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
         <div class="c-chips"><span class="hl">економія −32%</span><span>9 200 переходів</span></div>
       </div>
     </div>
-    <p class="swipe-hint">Гортай вбік, щоб побачити всі кейси →</p>
+    <p class="swipe-hint">Гортайте вбік, щоб побачити всі кейси →</p>
   </div>
 </section>
 
@@ -794,8 +810,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
         <a class="btn btn-acc" href="Rodychi_School_Second_Funnel_v7.pdf" target="_blank">Отримати гайд <span class="ar">→</span></a>
       </div>
     </div>
-    <p class="swipe-hint">Гортай вбік — три гайди під різні ніші →</p>
-    <p class="cta-or rv" style="text-align:center">Зручніше в Telegram? <a href="https://t.me/rodychi" style="color:var(--accent2);font-weight:700">Отримати гайд у боті @rodychi →</a></p>
+    <p class="swipe-hint">Гортайте вбік — три гайди під різні ніші →</p>
   </div>
 </section>
 
@@ -946,24 +961,41 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
 <script>
 /* alternate side-slide directions */
 document.querySelectorAll('.bento .bx,.rows .row,.rev-grid .rev,.tl-grid .tls,.numstrip .ns').forEach((el,i)=>el.classList.add(i%2?'sr':'sl'));
-/* reveal — once for most, bidirectional for services bento + chat bubbles */
-document.querySelectorAll('.bento .bx,.chat .bub').forEach(el=>{el.classList.add('rv-2');el.classList.remove('rv','sl','sr')});
+/* reveal — once for most, bidirectional for chat bubbles only */
+document.querySelectorAll('.chat .bub').forEach(el=>{el.classList.add('rv-2');el.classList.remove('rv','sl','sr')});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-/* bidirectional observer — bento services + pain chat bubbles */
+/* bidirectional observer for chat bubbles — slide back to sides on scroll up */
 const io2=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){
-    e.target.classList.add('on');
-    if(e.target.classList.contains('bx')){
-      e.target.classList.add('glow');
-      setTimeout(()=>e.target.classList.remove('glow'),900);
-    }
-  } else {
-    e.target.classList.remove('on');
-    e.target.classList.remove('glow');
-  }
+  if(e.isIntersecting){e.target.classList.add('on')}else{e.target.classList.remove('on')}
 }),{threshold:.18});
-document.querySelectorAll('.rv-2').forEach(el=>io2.observe(el));
+document.querySelectorAll('.bub.rv-2').forEach(el=>io2.observe(el));
+/* services bento — scroll-driven focus on the card closest to viewport center (mobile only) */
+const bxAll=Array.from(document.querySelectorAll('.bento .bx'));
+function updateBxFocus(){
+  if(!matchMedia('(max-width:768px)').matches){bxAll.forEach(b=>b.classList.remove('focus','dim'));return;}
+  if(!bxAll.length)return;
+  const cy=innerHeight*0.5;
+  let bestIdx=-1,bestDist=Infinity;
+  const visible=[];
+  bxAll.forEach((bx,i)=>{
+    const r=bx.getBoundingClientRect();
+    if(r.bottom>0&&r.top<innerHeight){
+      visible.push(i);
+      const c=r.top+r.height/2;
+      const d=Math.abs(c-cy);
+      if(d<bestDist){bestDist=d;bestIdx=i;}
+    }
+  });
+  bxAll.forEach((bx,i)=>{
+    if(i===bestIdx&&bestDist<innerHeight*0.4){bx.classList.add('focus');bx.classList.remove('dim');}
+    else if(visible.indexOf(i)>-1){bx.classList.add('dim');bx.classList.remove('focus');}
+    else{bx.classList.remove('focus','dim');}
+  });
+}
+addEventListener('scroll',updateBxFocus,{passive:true});
+addEventListener('resize',updateBxFocus);
+setTimeout(updateBxFocus,300);
 /* force-play videos on iOS Safari (autoplay sometimes blocked) */
 document.querySelectorAll('video').forEach(v=>{
   v.muted=true; v.playsInline=true;
