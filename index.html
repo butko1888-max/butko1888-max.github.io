@@ -115,7 +115,7 @@ section{padding:120px 0;position:relative;overflow:hidden}
 /* per-section glows removed — they were creating visible seams between sections (continuous aur backdrop handles atmosphere) */
 /* mobile floating CTA removed */
 /* ===== NAV ===== */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,9,29,.7);backdrop-filter:blur(18px);border-bottom:1px solid rgba(125,158,235,.1)}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(5,9,29,.7);backdrop-filter:blur(18px);border-bottom:1px solid rgba(125,158,235,.1)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;height:72px;max-width:1240px;margin:0 auto;padding:0 22px}
 .logo{display:flex;align-items:center;gap:12px;font-family:'Unbounded',sans-serif}
 .logo img,.logo video{width:44px;height:44px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 1px rgba(125,158,235,.3),0 0 0 0 rgba(94,139,240,.5);animation:logoHalo 2.6s ease-in-out infinite}
@@ -132,7 +132,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,9,29,.7);b
 .burger.open span:nth-child(1){transform:translateY(7.3px) rotate(45deg)}
 .burger.open span:nth-child(2){opacity:0}
 .burger.open span:nth-child(3){transform:translateY(-7.3px) rotate(-45deg)}
-.mobile-menu{display:flex;position:fixed;inset:0;background:rgba(5,9,29,.97);backdrop-filter:blur(20px);z-index:101;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:0 36px;opacity:0;pointer-events:none;transition:.35s}
+.mobile-menu{display:flex;position:fixed;inset:0;background:rgba(5,9,29,.97);backdrop-filter:blur(20px);z-index:150;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:80px 36px 40px;opacity:0;pointer-events:none;transition:.35s}
 .mobile-menu.open{opacity:1;pointer-events:auto}
 .mobile-menu a.mlink{font-family:'Unbounded',sans-serif;font-size:30px;font-weight:800;padding:9px 0;transform:translateY(14px);opacity:0;transition:.4s}
 .mobile-menu.open a.mlink{transform:none;opacity:1}
@@ -1061,10 +1061,21 @@ document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()
   document.querySelectorAll('.qa').forEach(x=>{x.classList.remove('open');x.querySelector('.ans').style.maxHeight=null});
   if(!open){qa.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px'}
 }));
-/* burger */
+/* burger + mobile menu — tap burger / tap backdrop / swipe down / Escape all close it */
 const burger=document.getElementById('burger'),mmenu=document.getElementById('mmenu');
-burger.addEventListener('click',()=>{burger.classList.toggle('open');mmenu.classList.toggle('open');document.body.style.overflow=mmenu.classList.contains('open')?'hidden':''});
-mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');mmenu.classList.remove('open');document.body.style.overflow=''}));
+function setMenu(open){
+  burger.classList.toggle('open',open);
+  mmenu.classList.toggle('open',open);
+  document.body.style.overflow=open?'hidden':'';
+}
+burger.addEventListener('click',e=>{e.stopPropagation();setMenu(!mmenu.classList.contains('open'));});
+mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+mmenu.addEventListener('click',e=>{if(e.target===mmenu)setMenu(false);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&mmenu.classList.contains('open'))setMenu(false);});
+let mtsY=null;
+mmenu.addEventListener('touchstart',e=>{if(e.touches.length===1)mtsY=e.touches[0].clientY;},{passive:true});
+mmenu.addEventListener('touchmove',e=>{if(mtsY!==null&&e.touches[0].clientY-mtsY>60){setMenu(false);mtsY=null;}},{passive:true});
+mmenu.addEventListener('touchend',()=>mtsY=null,{passive:true});
 /* progress + toTop */
 const toTop=document.getElementById('toTop'),prog=document.getElementById('prog');
 addEventListener('scroll',()=>{
