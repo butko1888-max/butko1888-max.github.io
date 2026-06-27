@@ -872,7 +872,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
       </div>
     </div>
     <div class="founder-socials rv">
-      <a href="https://t.me/rodychi" target="_blank">Telegram @rodychi</a>
+      <a href="https://t.me/rdch_media" target="_blank">Telegram @rdch_media</a>
       <a href="https://instagram.com/rodychi" target="_blank">Instagram</a>
       <a href="https://tiktok.com/@rodychi" target="_blank">TikTok</a>
     </div>
@@ -943,7 +943,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
   <div class="wrap">
     <div class="cta-panel rv">
       <h2>Готові побудувати вашу <span class="grad">Telegram-екосистему?</span></h2>
-      <p class="sub" style="text-align:center;max-width:560px;margin-left:auto;margin-right:auto">Залиште заявку — повернемось з планом протягом <b>24 годин</b>. Без email-розсилок, без ботів. Пише фаундер особисто.</p>
+      <p class="sub" style="text-align:center;max-width:580px;margin-left:auto;margin-right:auto">Залиште заявку — відпишемо протягом <b>5–10 хвилин</b>. Безкоштовний аудит для вас та вашого бізнесу — <b>у подарунок</b>.</p>
       <form class="cta-form" id="leadform" novalidate>
         <div class="frow">
           <input type="text" name="name" placeholder="Ваше ім'я" required maxlength="60" autocomplete="name">
@@ -962,7 +962,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
         <button class="btn btn-acc" type="submit" style="justify-content:center" id="lead-submit">Відправити заявку <span class="ar">→</span></button>
         <p class="lead-status" id="lead-status" aria-live="polite"></p>
       </form>
-      <p class="cta-or" style="margin-top:8px">або напишіть напряму — <a href="https://t.me/rodychi" target="_blank" style="color:var(--accent2);font-weight:600;border-bottom:1px solid rgba(125,158,235,.32)">@rodychi</a></p>
+      <p class="cta-or" style="margin-top:8px">або напишіть напряму — <a href="https://t.me/tviy_rodych" target="_blank" style="color:var(--accent2);font-weight:600;border-bottom:1px solid rgba(125,158,235,.32)">@tviy_rodych</a></p>
     </div>
   </div>
 </section>
@@ -985,7 +985,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
       <div>
         <h4>Контакти</h4>
         <ul>
-          <li><a href="https://t.me/rodychi" target="_blank">Telegram @rodychi</a></li>
+          <li><a href="https://t.me/tviy_rodych" target="_blank">Telegram @tviy_rodych</a></li>
           <li><a href="https://instagram.com/rodychi" target="_blank">Instagram</a></li>
           <li><a href="https://tiktok.com/@rodychi" target="_blank">TikTok</a></li>
         </ul>
@@ -1228,7 +1228,7 @@ addEventListener('scroll',()=>{
       const r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
       const j=await r.json().catch(()=>({ok:false,err:'parse'}));
       if(j.ok){
-        status.innerHTML='✅ <b>Дякуємо!</b> Повернемось протягом 24 годин у вказаний контакт.';
+        status.innerHTML='✅ <b>Дякуємо!</b> Відпишемо протягом 5–10 хвилин у вказаний контакт.';
         status.classList.add('ok');
         form.reset();
       }else if(j.err==='rate_limited'){
@@ -1242,7 +1242,7 @@ addEventListener('scroll',()=>{
       }
     }catch(err){
       console.warn('lead submit failed',err);
-      status.innerHTML='Не вдалось відправити. Напишіть напряму <a href="https://t.me/rodychi" target="_blank" style="color:#5C8BF0;text-decoration:underline">@rodychi</a> — повернемось особисто.';
+      status.innerHTML='Не вдалось відправити. Напишіть напряму <a href="https://t.me/tviy_rodych" target="_blank" style="color:#5C8BF0;text-decoration:underline">@tviy_rodych</a> — повернемось особисто.';
       status.classList.add('err');
     }finally{
       btn.disabled=false;
