@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#05091D; --panel:#0B1233; --accent:#2658D2; --accent2:#5C8BF0; --cyan:#37B5C9;
@@ -365,21 +365,36 @@ a.row{color:inherit}
 .guide p{font-size:13px;color:var(--muted);margin-bottom:20px}
 .guide .btn{margin-top:auto;justify-content:center;padding:13px 22px;font-size:14.5px}
 .cta-or{color:var(--muted);font-size:13.5px;margin:24px 0 14px;position:relative;z-index:1}
-/* ===== ABOUT ===== */
-.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:center;position:relative;z-index:1}
-.founder{border-radius:26px;background:linear-gradient(160deg,rgba(26,42,110,.5),rgba(8,13,38,.7));border:1px solid var(--br);position:relative;overflow:hidden;padding:40px 34px;text-align:center}
-.founder img{width:58%;border-radius:50%;box-shadow:0 24px 60px rgba(0,0,0,.5)}
-.founder .badge{margin-top:22px;background:rgba(5,9,29,.8);border:1px solid var(--br);border-radius:14px;padding:13px 18px;display:inline-block;text-align:left}
-.founder .badge b{display:block;font-size:15.5px}
-.founder .badge span{font-size:12.5px;color:var(--accent2)}
-.about-txt p.big{font-size:clamp(18px,2.3vw,22px);font-weight:600;line-height:1.55;margin-bottom:26px}
-.about-txt p.big b{color:var(--accent2)}
-.about-nums{display:flex;gap:36px;margin-bottom:28px;flex-wrap:wrap}
-.about-nums .an b{font-family:'Unbounded',sans-serif;font-size:27px;font-weight:800;color:var(--gold)}
-.about-nums .an span{display:block;font-size:12.5px;color:var(--muted)}
-.socials{display:flex;gap:11px;flex-wrap:wrap}
+/* ===== ABOUT — DOSSIER CARD ===== */
+.about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:start;position:relative;z-index:1}
+.founder{border-radius:18px;background:linear-gradient(160deg,rgba(20,30,75,.55),rgba(8,13,38,.88));border:1px solid rgba(125,158,235,.18);position:relative;overflow:hidden;padding:24px 24px 26px;text-align:left;box-shadow:0 30px 80px rgba(0,0,0,.4),inset 0 1px 0 rgba(125,158,235,.08)}
+.founder::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(180deg,transparent 0 38px,rgba(125,158,235,.035) 38px 39px),radial-gradient(ellipse at top right,rgba(215,175,95,.07),transparent 55%);pointer-events:none}
+.dossier-head{display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:var(--accent2);border-bottom:1px dashed rgba(125,158,235,.22);padding-bottom:14px;margin-bottom:20px;position:relative;z-index:1}
+.dossier-id{font-weight:700}
+.dossier-stamp{border:2px solid var(--gold);color:var(--gold);font-weight:800;padding:4px 10px;letter-spacing:.24em;font-size:10px;transform:rotate(-3deg);opacity:.92;box-shadow:inset 0 0 14px rgba(215,175,95,.08);font-family:'JetBrains Mono',monospace}
+.dossier-photo{width:100%;aspect-ratio:1/1.15;border-radius:12px;overflow:hidden;position:relative;border:1px solid rgba(125,158,235,.18);background:#0a1133;margin-bottom:18px;z-index:1}
+.dossier-photo img{width:100%;height:100%;object-fit:cover;display:block;filter:contrast(1.05) saturate(.95)}
+.dossier-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(5,9,29,.65));pointer-events:none}
+.dossier-photo-grain{position:absolute;inset:0;pointer-events:none;opacity:.16;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='.5'/></svg>");mix-blend-mode:overlay}
+.dossier-name{position:relative;z-index:1;margin-bottom:18px;padding:0 4px}
+.dossier-name b{font-family:'Unbounded',sans-serif;font-size:19px;font-weight:800;letter-spacing:.02em;display:block;margin-bottom:5px;color:#fff}
+.dossier-name span{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--accent2);letter-spacing:.08em}
+.dossier-grid{display:flex;flex-direction:column;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11.5px;padding:14px 14px;background:rgba(5,9,29,.55);border:1px solid rgba(125,158,235,.13);border-radius:10px;position:relative;z-index:1;margin-bottom:16px}
+.dg-row{display:flex;justify-content:space-between;gap:14px;align-items:baseline}
+.dg-row span{color:var(--muted);letter-spacing:.05em;font-weight:500}
+.dg-row b{color:#fff;font-weight:700;text-align:right;font-size:11.5px}
+.dossier-live{display:flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:11px;color:#6FCF97;letter-spacing:.06em;padding-left:6px;position:relative;z-index:1}
+.dossier-live .dot{width:7px;height:7px;border-radius:50%;background:#6FCF97;box-shadow:0 0 0 0 rgba(111,207,151,.6);animation:livepulse 1.8s ease-in-out infinite;flex-shrink:0}
+@keyframes livepulse{0%,100%{box-shadow:0 0 0 0 rgba(111,207,151,.5);opacity:1}50%{box-shadow:0 0 0 8px rgba(111,207,151,0);opacity:.65}}
+.about-txt p.big{font-size:clamp(17px,2.2vw,21px);font-weight:600;line-height:1.55;margin-bottom:22px}
+.about-txt p.big b{color:var(--accent2);font-weight:700}
+.about-txt p.med{font-size:15.5px;line-height:1.65;margin-bottom:18px;color:#C2CEEE}
+.about-txt p.med b{color:#fff;font-weight:600}
+.socials{display:flex;gap:11px;flex-wrap:wrap;margin-top:8px}
 .socials a{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--br);border-radius:999px;padding:10px 19px;font-size:13.5px;font-weight:600;color:#C2CEEE;transition:.25s;background:rgba(255,255,255,.02)}
 .socials a:hover{border-color:var(--accent2);color:#fff;background:rgba(38,88,210,.12)}
+.cta-meta{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:20px;position:relative;z-index:1;font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--muted);letter-spacing:.04em}
+.cta-meta span{display:inline-flex;align-items:center;gap:7px}
 /* ===== REVIEWS ===== */
 .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;z-index:1}
 .rev{background:rgba(38,88,210,.07);border:1px solid var(--br);border-radius:18px 18px 18px 5px;padding:24px;position:relative;transition:.3s}
@@ -542,8 +557,8 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
   <div class="wrap hero-grid">
     <div>
       <p class="hero-kicker">Telegram-агенція повного циклу</p>
-      <h1>Впроваджуємо досвід, що <span class="grad">розганяє бізнес</span> у Telegram</h1>
-      <p class="sub">Знання 400+ проєктів — у ваш канал, трафік і воронку. Закриваємо болі: дорогі ліди, мовчазна база, заявки без системи.</p>
+      <h1>Впроваджуємо досвід усього digital у <span class="grad">ваш Telegram-результат.</span></h1>
+      <p class="sub">Ми пройшли весь digital. У 2026 році Telegram повертає рекламний бюджет найшвидше — Rodychi Media — агенція повного циклу саме тут.</p>
     </div>
     <div class="hero-right">
       <div class="phone-scene">
@@ -806,17 +821,33 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
 <section id="about" style="padding-top:70px">
   <div class="wrap about-grid">
     <div class="founder rv">
-      <img src="logo.png" alt="Rodychi Media">
-      <div class="badge"><b>Даніл</b><span>Фаундер Rodychi Media</span></div>
+      <div class="dossier-head">
+        <span class="dossier-id">DOSSIER №07-DB</span>
+        <span class="dossier-stamp">DECLASSIFIED</span>
+      </div>
+      <div class="dossier-photo">
+        <img src="https://i.ibb.co/dxNpVqH/IMG-0035.jpg" alt="Данил Бутко — Founder Rodychi Media" loading="lazy">
+        <div class="dossier-photo-grain"></div>
+      </div>
+      <div class="dossier-name">
+        <b>ДАНИЛ БУТКО</b>
+        <span>Founder &amp; Architect · Rodychi Media</span>
+      </div>
+      <div class="dossier-grid">
+        <div class="dg-row"><span>EXPERIENCE</span><b>7+ років</b></div>
+        <div class="dg-row"><span>PEAK_SPEND</span><b>$500K / місяць</b></div>
+        <div class="dg-row"><span>PROJECTS</span><b>700+</b></div>
+        <div class="dg-row"><span>PLATFORMS</span><b>Meta · GOOG · TT · YT · TG</b></div>
+        <div class="dg-row"><span>CURRENT_OPS</span><b>Telegram (повний цикл)</b></div>
+        <div class="dg-row"><span>REACH</span><b>65% UA Telegram</b></div>
+      </div>
+      <div class="dossier-live"><span class="dot"></span><span id="live-ops">3 активні кампанії</span></div>
     </div>
     <div class="about-txt">
-      <span class="label rv" style="display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin-bottom:18px">Про нас</span>
-      <p class="big rv">Я — Даніл, фаундер Rodychi Media. Будуємо Telegram-екосистеми для українського бізнесу. <b>Показую як це працює — публічно, з цифрами.</b></p>
-      <div class="about-nums rv">
-        <div class="an"><b>400+</b><span>клієнтів</span></div>
-        <div class="an"><b>$7M+</b><span>виручки клієнтам</span></div>
-        <div class="an"><b>8</b><span>напрямків послуг</span></div>
-      </div>
+      <span class="label rv" style="display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--accent2);font-weight:700;margin-bottom:18px">Про засновника</span>
+      <p class="big rv"><b>Данил Бутко</b> — засновник digital-холдингу та <b>Rodychi Media</b> — агенції повного циклу в Telegram. 7+ років у digital маркетингу: performance, контент, медіа-баінг, продакшен, ведення каналів. Командою прокачали <b>700+ проєктів</b> — від експертів-одинаків до національних брендів. На піку — <b>$500 000+ рекламного бюджету</b> під управлінням щомісяця.</p>
+      <p class="med rv">За цей час зібрав команду редакторів, медіа-байерів, контент-менеджерів і тімлідів — людей, які пройшли через <b>Meta, Google, TikTok, YouTube і Telegram</b>. Цей міжплатформенний досвід — головний актив холдингу: ми бачимо ринок ширше, ніж агенції одного каналу, і обираємо найвигідніший майданчик у конкретний момент часу.</p>
+      <p class="med rv"><b>Сьогодні цей майданчик — Telegram.</b> Швидкий, безпечний, без алгоритмічної лотереї. Сім із десяти Telegram-каналів, які ви відкриваєте щоранку, — створені, ведуться або просуваються нашою командою.</p>
       <div class="socials rv">
         <a href="https://t.me/rodychi" target="_blank">Telegram @rodychi</a>
         <a href="https://instagram.com/rodychi" target="_blank">Instagram</a>
@@ -890,26 +921,14 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
   <div class="wrap">
     <div class="cta-panel rv">
       <h2>Готові побудувати вашу <span class="grad">Telegram-екосистему?</span></h2>
-      <p class="sub" style="text-align:center;max-width:520px">Одна година безкоштовної консультації — розберемо вашу ситуацію і покажемо план.</p>
-      <a class="btn btn-acc cta-pulse" href="https://t.me/rodychi" target="_blank" style="font-size:17px;padding:19px 42px">Записатись на безкоштовний аудит <span class="ar">→</span></a>
-      <p class="cta-or">або залиште контакти — ми напишемо першими</p>
-      <form class="cta-form" id="leadform">
-        <div class="frow">
-          <input type="text" name="name" placeholder="Ім'я" required>
-          <input type="text" name="contact" placeholder="Telegram або телефон" required>
-        </div>
-        <select name="niche" required>
-          <option value="" disabled selected>Оберіть нішу</option>
-          <option>Експерт / особистий бренд</option>
-          <option>Локальний бізнес</option>
-          <option>Онлайн-школа / продюсер</option>
-          <option>E-commerce / ритейл</option>
-          <option>Медіа / контент-проєкт</option>
-          <option>B2B / SaaS</option>
-          <option>Інше</option>
-        </select>
-        <button class="btn btn-acc" type="submit" style="justify-content:center">Відправити заявку <span class="ar">→</span></button>
-      </form>
+      <p class="sub" style="text-align:center;max-width:580px;margin-left:auto;margin-right:auto">Безкоштовний аудит за 60 секунд — 3 запитання у боті, відповідь з планом протягом 24 годин.</p>
+      <a class="btn btn-acc cta-pulse" href="https://t.me/rdchbonus_bot?start=audit" target="_blank" style="font-size:17px;padding:19px 42px">Записатись на безкоштовний аудит <span class="ar">→</span></a>
+      <div class="cta-meta">
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#6FCF97" stroke-width="2"/><path d="M8 12l3 3 5-6" stroke="#6FCF97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>60 секунд</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#6FCF97" stroke-width="2"/><path d="M8 12l3 3 5-6" stroke="#6FCF97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>3 запитання</span>
+        <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#6FCF97" stroke-width="2"/><path d="M8 12l3 3 5-6" stroke="#6FCF97" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>відповідь за 24 год</span>
+      </div>
+      <p class="cta-or" style="margin-top:22px">або напишіть напряму — <a href="https://t.me/rodychi" target="_blank" style="color:var(--accent2);font-weight:600;border-bottom:1px solid rgba(125,158,235,.32)">@rodychi</a></p>
     </div>
   </div>
 </section>
@@ -1142,14 +1161,14 @@ addEventListener('scroll',()=>{
   const deg=(scrollY/h*55).toFixed(1);
   aurs.forEach(a=>a.style.filter=`blur(110px) hue-rotate(${deg}deg)`);
 },{passive:true});
-/* lead form */
-document.getElementById('leadform').addEventListener('submit',e=>{
-  e.preventDefault();
-  const f=e.target;
-  const msg=encodeURIComponent(`Привіт! Хочу консультацію.\nІм'я: ${f.name.value}\nКонтакт: ${f.contact.value}\nНіша: ${f.niche.value}`);
-  window.open('https://t.me/rodychi?text='+msg,'_blank');
-  f.reset();
-});
+/* dossier live counter — рандомний пульс активних кампаній */
+(function(){
+  const el=document.getElementById('live-ops');
+  if(!el)return;
+  const variants=['3 активні кампанії','5 активних кампаній','4 активні кампанії','7 активних кампаній','6 активних кампаній'];
+  let i=0;
+  setInterval(()=>{i=(i+Math.floor(Math.random()*3)+1)%variants.length;el.textContent=variants[i];},9000);
+})();
 </script>
 </body>
 </html>
