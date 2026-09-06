@@ -68,6 +68,9 @@ section{padding:120px 0;position:relative;overflow:hidden}
 #cur.on{opacity:.9}
 #cur.big{width:46px;height:46px;background:radial-gradient(circle,rgba(157,188,255,.35),rgba(157,188,255,.06))}
 @media(pointer:coarse){#cur{display:none}}
+
+/* Telegram/mobile WebView: kill GPU-heavy effects that cause section blanking. Safari desktop unaffected. */
+@media(hover:none){.aur{animation:none!important;filter:blur(60px)!important}.aur.a3,.aur.a4{display:none}.grain{display:none}nav{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(5,9,29,.94)!important}.mobile-menu{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(5,9,29,.98)!important}.orb-stat,.ph-chip{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}#toTop{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}.founder-flip{perspective:none}.founder-inner{transform:none!important;will-change:auto!important}.founder.front,.founder.back{position:relative;transform:none!important;transition:opacity .3s ease}.founder.back{display:none;height:auto;width:auto;top:auto;left:auto}.founder-flip.flipped .founder.front{display:none}.founder-flip.flipped .founder.back{display:flex;opacity:1;pointer-events:auto}}
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.8,.3,1)}
 .rv.sl{transform:translateX(-52px)}
