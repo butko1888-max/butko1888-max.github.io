@@ -68,8 +68,6 @@ section{padding:120px 0;position:relative;overflow:hidden}
 #cur.on{opacity:.9}
 #cur.big{width:46px;height:46px;background:radial-gradient(circle,rgba(157,188,255,.35),rgba(157,188,255,.06))}
 @media(pointer:coarse){#cur{display:none}}
-/* reveal — disabled on touch/mobile to avoid stuck-invisible elements */
-@media(hover:none),(max-width:768px){.rv,.bub.rv-2{opacity:1!important;transform:none!important;transition:none!important}}
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.8,.3,1)}
 .rv.sl{transform:translateX(-52px)}
@@ -1004,6 +1002,8 @@ document.querySelectorAll('.bento .bx,.rows .row,.rev-grid .rev,.tl-grid .tls,.n
 document.querySelectorAll('.chat .bub').forEach(el=>{el.classList.add('rv-2');el.classList.remove('rv','sl','sr')});
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+/* fallback: force reveal after 3s if observer missed anything (iOS Safari 3D-transform hazard) */
+setTimeout(()=>document.querySelectorAll('.rv:not(.on)').forEach(el=>el.classList.add('on')), 3000);
 /* bidirectional observer for chat bubbles — slide back to sides on scroll up */
 const io2=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){e.target.classList.add('on')}else{e.target.classList.remove('on')}
