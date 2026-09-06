@@ -69,8 +69,20 @@ section{padding:120px 0;position:relative;overflow:hidden}
 #cur.big{width:46px;height:46px;background:radial-gradient(circle,rgba(157,188,255,.35),rgba(157,188,255,.06))}
 @media(pointer:coarse){#cur{display:none}}
 
-/* Telegram/mobile WebView: kill GPU-heavy effects that cause section blanking. Safari desktop unaffected. */
-@media(hover:none){.aur{animation:none!important;filter:blur(60px)!important}.aur.a3,.aur.a4{display:none}.grain{display:none}nav{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(5,9,29,.94)!important}.mobile-menu{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(5,9,29,.98)!important}.orb-stat,.ph-chip{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}#toTop{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}.founder-flip{perspective:none}.founder-inner{transform:none!important;will-change:auto!important}.founder.front,.founder.back{position:relative;transform:none!important;transition:opacity .3s ease}.founder.back{display:none;height:auto;width:auto;top:auto;left:auto}.founder-flip.flipped .founder.front{display:none}.founder-flip.flipped .founder.back{display:flex;opacity:1;pointer-events:auto}}
+/* Telegram WebView only: kill GPU-heavy effects that cause section blanking. Mobile Safari untouched. */
+html.tg-webview .aur{animation:none!important;filter:blur(60px)!important}
+html.tg-webview .aur.a3,html.tg-webview .aur.a4{display:none}
+html.tg-webview .grain{display:none}
+html.tg-webview nav{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(5,9,29,.94)!important}
+html.tg-webview .mobile-menu{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:rgba(5,9,29,.98)!important}
+html.tg-webview .orb-stat,html.tg-webview .ph-chip{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html.tg-webview #toTop{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+html.tg-webview .founder-flip{perspective:none}
+html.tg-webview .founder-inner{transform:none!important;will-change:auto!important}
+html.tg-webview .founder.front,html.tg-webview .founder.back{position:relative;transform:none!important;transition:opacity .3s ease}
+html.tg-webview .founder.back{display:none;height:auto;width:auto;top:auto;left:auto}
+html.tg-webview .founder-flip.flipped .founder.front{display:none}
+html.tg-webview .founder-flip.flipped .founder.back{display:flex;opacity:1;pointer-events:auto}
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.8,.3,1)}
 .rv.sl{transform:translateX(-52px)}
@@ -336,14 +348,14 @@ a.row{color:inherit}
 .c-head span.s{display:block;font-size:11.5px;color:var(--muted)}
 .c-head .tag{margin-left:auto;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#AFC6F5;background:rgba(38,88,210,.16);border:1px solid rgba(125,158,235,.25);padding:4px 11px;border-radius:999px;white-space:nowrap}
 .case.wide .c-head .tag{margin-left:12px}
-.c-big{font-family:'Unbounded',sans-serif;font-size:clamp(30px,3vw,40px);font-weight:800;letter-spacing:-.01em;background:linear-gradient(92deg,#FFFFFF,#9DBCFF);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.05;position:relative}
+.c-big{font-family:'Unbounded',sans-serif;font-size:clamp(30px,3vw,40px);font-weight:800;letter-spacing:-.01em;color:#fff;line-height:1.05;position:relative}
 .case.feat .c-big{font-size:clamp(38px,4.4vw,58px)}
 .c-big span{display:block;font-family:'Inter',sans-serif;font-size:12.5px;font-weight:500;color:var(--muted);letter-spacing:0;margin-top:6px;-webkit-text-fill-color:var(--muted)}
 .c-req{font-size:13px;color:var(--muted);margin:16px 0 20px;flex:1;position:relative}
 .c-req b{color:#C2CEEE;font-weight:600}
 .c-chips{display:flex;flex-wrap:wrap;gap:7px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07);position:relative}
 .c-chips span{font-size:12px;font-weight:600;color:#D8E2FA;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);border-radius:999px;padding:5px 12px}
-.c-chips span.hl{color:var(--green);border-color:rgba(111,207,151,.3);background:rgba(111,207,151,.07)}
+.c-chips span.hl{color:var(--green);border-color:rgba(111,207,151,.35);background:rgba(111,207,151,.09);font-family:'Unbounded',sans-serif;font-weight:700;letter-spacing:.02em}
 /* ===== PROCESS TIMELINE ===== */
 .tl{position:relative;margin-top:26px;z-index:1;--p:0}
 .tl::before{content:"";position:absolute;top:7px;left:0;right:0;height:1.5px;background:rgba(125,158,235,.15)}
@@ -537,6 +549,7 @@ footer{border-top:1px solid rgba(125,158,235,.1);padding:56px 0 28px;background:
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
+<script>(function(){var ua=navigator.userAgent||"";if(/Telegram|TelegramBot/i.test(ua)||window.TelegramWebviewProxy||window.Telegram){document.documentElement.classList.add("tg-webview");}})();</script>
 </head>
 <body>
 <div class="aur a1"></div><div class="aur a2"></div><div class="aur a3"></div><div class="aur a4"></div>
