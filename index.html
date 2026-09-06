@@ -61,6 +61,9 @@ section{padding:120px 0;position:relative;overflow:hidden}
 @keyframes aur2{to{transform:translate(7vw,-6vh) scale(.88)}}
 /* mobile: freeze aurora animations + lighter blur → fixes iOS Safari flicker/blanking of sections */
 @media(max-width:768px){.aur{animation:none!important;filter:blur(70px)}.aur.a3,.aur.a4{display:none}}
+
+/* mobile: disable 3D flip (iOS Safari fails to composite perspective+rotateY+position:absolute → blank card). Simple opacity/pointer toggle instead. */
+@media(max-width:768px){.founder-flip{perspective:none}.founder-inner{transform:none!important}.founder.front,.founder.back{position:relative;transform:none!important;transition:opacity .3s ease}.founder.back{display:none;height:auto;width:auto;top:auto;left:auto}.founder-flip.flipped .founder.front{display:none}.founder-flip.flipped .founder.back{display:flex;opacity:1;pointer-events:auto}}
 /* mobile: kill iOS Safari flicker — backdrop-filter on fixed nav + full-viewport grain overlay repaint the entire viewport every scroll frame */
 @media(max-width:768px){nav{backdrop-filter:none!important;background:rgba(5,9,29,.94)!important}.grain{display:none}.mobile-menu{backdrop-filter:none;background:rgba(5,9,29,.98)}}
 
